@@ -35,3 +35,19 @@ brew tap 5ouma/tap
   ```sh
   brew install mli
   ```
+
+<br />
+
+### 🥫 Applications
+
+- [**◻️ Aseprite**](https://www.aseprite.org)
+
+  ```sh
+  brew install aseprite
+  ```
+
+- [**🔄 FreeFileSync**](https://freefilesync.org)
+
+  ```sh
+  brew install freefilesync
+  ```
