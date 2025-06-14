@@ -1,0 +1,68 @@
+name: 📥 Install Package
+
+on:
+  workflow_call:
+    inputs:
+      repository:
+        description: The repository to install from
+        required: true
+        type: string
+      package:
+        description: The package to install
+        required: true
+        type: string
+      macos_only:
+        description: Whether the package is macOS only
+        required: true
+        type: boolean
+
+permissions: {}
+
+jobs:
+  define-os:
+    name: 🔍 Define OS
+    runs-on: Ubuntu-Latest
+    timeout-minutes: 1
+    outputs:
+      os: ${{ steps.decide-os.outputs.os }}
+
+    steps:
+      - name: 🐧 Decide whether to install on Ubuntu
+        id: decide-os
+        run: |
+          os=('macOS-13' 'macOS-14')
+          "$MACOS_ONLY" || os+=('Ubuntu-Latest')
+          echo "os=$(jq -Rc 'split(" ")' <<<"${os[@]}")" | tee -a "$GITHUB_OUTPUT"
+        env:
+          MACOS_ONLY: ${{ inputs.macos_only }}
+
+  install:
+    name: ${{ startsWith(matrix.os, 'macOS') && '🍎' || '🐧' }} ${{ matrix.os }}
+    needs: define-os
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 3
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ${{ fromJson(needs.define-os.outputs.os) }}
+
+    steps:
+      - name: 🚚 Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: 🍺 Setup Homebrew with Bundler
+        uses: ./.github/actions/setup-homebrew-with-bundler
+
+      - name: 🚰 Tap and switch branch
+        run: |
+          brew tap "$repository"
+          git -C "$(brew tap-info "$repository" --json | jq -r '.[].path')" switch "${GITHUB_HEAD_REF:-main}"
+        env:
+          repository: ${{ inputs.repository }}
+
+      - name: 📦 Install package
+        run: brew install --verbose "$package"
+        env:
+          package: ${{ inputs.package }}

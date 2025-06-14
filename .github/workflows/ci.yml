@@ -1,0 +1,117 @@
+name: 🎽 CI
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**.rb"
+      - .github/workflows/ci.yml
+      - .github/workflows/install-package.yml
+  pull_request:
+    paths:
+      - "**.rb"
+      - .github/workflows/ci.yml
+      - .github/workflows/install-package.yml
+  schedule:
+    - cron: 0 0 * * SAT
+
+permissions: {}
+
+env:
+  repository: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name || github.repository }}
+
+jobs:
+  test:
+    name: 🧪 Test
+    runs-on: macOS-Latest
+    timeout-minutes: 3
+
+    steps:
+      - name: 🚚 Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: 🍺 Setup Homebrew with Bundler
+        uses: ./.github/actions/setup-homebrew-with-bundler
+
+      - name: 🚰 Tap and switch branch
+        run: |
+          brew tap "$repository"
+          git -C "$(brew tap-info "$repository" --json | jq -r '.[].path')" switch "${GITHUB_HEAD_REF:-main}"
+
+      - name: 🧹 Cleanup Test Bot
+        run: brew test-bot --verbose --only-cleanup-before
+
+      - name: 💈 Check files for conformance to Homebrew style guidelines
+        run: brew style --debug "$repository"
+
+      - name: 💎 Check if any files have Ruby issues
+        run: brew readall --verbose "$repository"
+
+      - name: 📊 Check for Homebrew coding style violations
+        run: brew audit --debug --strict --tap="$repository"
+
+  detect-changed-packages:
+    name: 🔍 Detect Changed Packages
+    runs-on: macOS-Latest
+    timeout-minutes: 1
+    outputs:
+      packages: ${{ steps.collect.outputs.packages }}
+
+    steps:
+      - name: 🚚 Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+
+      - name: 🍺 Setup Homebrew with Bundler
+        uses: ./.github/actions/setup-homebrew-with-bundler
+
+      - name: 🚰 Tap and switch branch
+        run: |
+          brew tap "$repository"
+          git -C "$(brew tap-info "$repository" --json | jq -r '.[].path')" switch "${GITHUB_HEAD_REF:-main}"
+
+      - name: 🔄 Filter the changed files
+        id: filter
+        uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2
+        with:
+          filters: |
+            package: "**.rb"
+            workflow: [.github/workflows/ci.yml, .github/workflows/install-package.yml]
+          list-files: shell
+
+      - name: 📡 Collect package information
+        id: collect
+        run: |
+          if "$WORKFLOW_CHANGED"; then
+            packages="$(find "$GITHUB_WORKSPACE" -name '**.rb')"
+          else
+            packages="$CHANGED_PACKAGES"
+          fi
+          for package in $packages; do
+            name="$(echo "$package" | xargs basename | sed 's/\.rb$//')"
+            full_name="${repository/homebrew-}/$name"
+            if [[ "$package" =~ Casks ]] || (brew info "$full_name" | grep -q 'Required: macOS'); then
+              macos_only="yes"
+            fi
+            echo "$name,$full_name,$macos_only" | jq -Rc 'split(",") | { name: .[0], full_name: .[1], macos_only: .[2] | test("yes") }'
+          done | echo "packages=$(jq -sc)" | tee -a "$GITHUB_OUTPUT"
+        env:
+          CHANGED_PACKAGES: ${{ steps.filter.outputs.package_files }}
+          WORKFLOW_CHANGED: ${{ steps.filter.outputs.workflow }}
+
+  install:
+    name: 📥 Install ${{ matrix.package.name }}
+    needs: detect-changed-packages
+    uses: ./.github/workflows/install-package.yml
+    with:
+      repository: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name || github.repository }}
+      package: ${{ matrix.package.full_name }}
+      macos_only: ${{ matrix.package.macos_only }}
+    strategy:
+      fail-fast: false
+      matrix:
+        package: ${{ fromJson(needs.detect-changed-packages.outputs.packages) }}

@@ -1,0 +1,45 @@
+name: ✨ Bump Packages
+
+on:
+  schedule:
+    - cron: 0 0 * * *
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  bump-formula:
+    name: 🧾 Bump Formula
+    permissions:
+      pull-requests: write
+    runs-on: Ubuntu-Latest
+    timeout-minutes: 3
+
+    steps:
+      - name: 🍺 Setup Homebrew with Bundler
+        uses: ./.github/actions/setup-homebrew-with-bundler
+
+      - name: ✨ Version up Homebrew Formula
+        uses: dawidd6/action-homebrew-bump-formula@8d494330bce4434918392df134ad3db1167904db # v4
+        with:
+          token: ${{ secrets.TOKEN }}
+          tap: ${{ github.repository }}
+          livecheck: true
+
+  bump-cask:
+    name: 🥫 Bump Cask
+    permissions:
+      pull-requests: write
+    runs-on: Ubuntu-Latest
+    timeout-minutes: 3
+
+    steps:
+      - name: 🍺 Setup Homebrew with Bundler
+        uses: ./.github/actions/setup-homebrew-with-bundler
+
+      - name: ✨ Version up Homebrew Cask
+        uses: macauley/action-homebrew-bump-cask@445c42390d790569d938f9068d01af39ca030feb # v1.0.0
+        with:
+          token: ${{ secrets.TOKEN }}
+          tap: ${{ github.repository }}
+          livecheck: true
