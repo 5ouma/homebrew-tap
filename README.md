@@ -51,3 +51,79 @@ brew tap 5ouma/tap
   ```sh
   brew install freefilesync
   ```
+
+<br />
+
+### 🔠 Fonts
+
+- [**👾 BestTen**](https://flop.fanbox.cc/posts/1918861)
+
+  ```sh
+  brew install font-bestten
+  ```
+
+- [**🌰 Donguri Duel**](https://hicchicc.github.io/00ff)
+
+  ```sh
+  brew install font-donguri-duel
+  ```
+
+- [**😀 Emoooji**](https://rarapon.net/download/other/emoooji)
+
+  ```sh
+  brew install font-emoooji
+  ```
+
+- 🌀 Giro
+
+  ```sh
+  brew install font-giro
+  ```
+
+- [**🖋️ Inkling**](https://frozenpandaman.github.io/inkling.html)
+
+  ```sh
+  brew install font-inkling
+  ```
+
+- [**🌱 LINE Seed JP**](https://seed.line.me)
+
+  ```sh
+  brew install font-line-seed-jp
+  ```
+
+- [**🥥 Natadecoco gothic**](https://kashika-labo.com/natadecoco-gothic)
+
+  ```sh
+  brew install font-natadecoco-gothic
+  ```
+
+- [**🫥 Ndot**](https://nothing.tech)
+
+  ```shell
+  brew install font-ndot
+  ```
+
+- [**🕶️ Nerd Fonts**](https://www.nerdfonts.com)
+
+  ```shell
+  brew install font-nerd-fonts
+  ```
+
+- [**🌼 ROLAchan**](https://ozawa.design/store/rolachan)
+
+  ```sh
+  brew install font-rolachan
+  ```
+
+- [**🦑 Splatoon1**](https://frozenpandaman.github.io/inkling.html)
+
+  ```sh
+  brew install font-splatoon1
+  ```
+
+- [**🦑 Splatoon2**](https://frozenpandaman.github.io/inkling.html)
+
+  ```sh
+  brew install font-splatoon2
+  ```
