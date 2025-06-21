@@ -86,7 +86,7 @@ jobs:
       - name: 📡 Collect package information
         id: collect
         run: |
-          if "$WORKFLOW_CHANGED"; then
+          if "$WORKFLOW_CHANGED" || "$SCHEDULE_RUN"; then
             packages="$(find "$GITHUB_WORKSPACE" -name '**.rb')"
           else
             packages="$CHANGED_PACKAGES"
@@ -102,6 +102,7 @@ jobs:
         env:
           CHANGED_PACKAGES: ${{ steps.filter.outputs.package_files }}
           WORKFLOW_CHANGED: ${{ steps.filter.outputs.workflow }}
+          SCHEDULE_RUN: ${{ github.event_name == 'schedule' }}
 
   install:
     name: 📥 Install ${{ matrix.package.name }}
