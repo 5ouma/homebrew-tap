@@ -7,7 +7,7 @@ runs:
   steps:
     - name: 🍺 Setup Homebrew
       id: homebrew
-      uses: Homebrew/actions/setup-homebrew@cf7316b4ba357a8a8f68e1bc3b5ae7bffd3c2a15 # master # zizmor: ignore[stale-action-refs]
+      uses: Homebrew/actions/setup-homebrew@24a0b15df658487e137fcd20fba32757d41a9411 # master # zizmor: ignore[stale-action-refs]
 
     - name: 🫙 Cache Homebrew Bundler RubyGems
       id: cache
