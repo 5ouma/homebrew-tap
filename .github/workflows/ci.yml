@@ -8,11 +8,13 @@ on:
       - "**.rb"
       - .github/workflows/ci.yml
       - .github/workflows/install-package.yml
+      - .github/actions/setup-homebrew-with-bundler/action.yml
   pull_request:
     paths:
       - "**.rb"
       - .github/workflows/ci.yml
       - .github/workflows/install-package.yml
+      - .github/actions/setup-homebrew-with-bundler/action.yml
   schedule:
     - cron: 0 0 * * SAT
 
