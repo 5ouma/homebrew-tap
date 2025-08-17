@@ -1,0 +1,32 @@
+name: 🍺 Setup Homebrew with Tap
+description: Setup Homebrew and tap the repository at a specific ref
+
+inputs:
+  ref:
+    description: The ref to check out
+    required: true
+
+outputs:
+  gems-path:
+    description: Homebrew's Ruby gems path
+    value: ${{ steps.homebrew.outputs.gems-path }}
+  gems-hash:
+    description: Homebrew's Ruby Gemfile.lock sha256sum
+    value: ${{ steps.homebrew.outputs.gems-hash }}
+
+runs:
+  using: composite
+
+  steps:
+    - name: 🍺 Setup Homebrew
+      id: homebrew
+      uses: Homebrew/actions/setup-homebrew@67ea3b6421dff421c27cb1217f4ca1fb3aa781ed # master # zizmor: ignore[stale-action-refs]
+      env:
+        HOMEBREW_IN_CONTAINER: 1
+
+    - name: 🚰 Switch the tap ref
+      run: git -C "$tap" switch --detach "$ref"
+      shell: bash
+      env:
+        tap: ${{ steps.homebrew.outputs.repository-path }}
+        ref: ${{ inputs.ref }}

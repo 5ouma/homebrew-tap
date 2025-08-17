@@ -3,10 +3,6 @@ name: 📥 Install Package
 on:
   workflow_call:
     inputs:
-      repository:
-        description: The repository to install from
-        required: true
-        type: string
       package:
         description: The package to install
         required: true
@@ -48,21 +44,15 @@ jobs:
 
     steps:
       - name: 🚚 Checkout repository
+        id: checkout
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           persist-credentials: false
 
-      - name: 🍺 Setup Homebrew
-        uses: Homebrew/actions/setup-homebrew@67ea3b6421dff421c27cb1217f4ca1fb3aa781ed # master # zizmor: ignore[stale-action-refs]
-        env:
-          HOMEBREW_IN_CONTAINER: 1
-
-      - name: 🚰 Tap and switch branch
-        run: |
-          brew tap "$repository"
-          git -C "$(brew tap-info "$repository" --json | jq -r '.[].path')" switch "${GITHUB_HEAD_REF:-main}"
-        env:
-          repository: ${{ inputs.repository }}
+      - name: 🍺 Setup Homebrew with Tap
+        uses: ./.github/actions/setup-homebrew-with-tap
+        with:
+          ref: ${{ steps.checkout.outputs.commit }}
 
       - name: 📦 Install package
         run: brew install --verbose "$package"
