@@ -52,8 +52,10 @@ jobs:
         with:
           persist-credentials: false
 
-      - name: 🍺 Setup Homebrew with Bundler
-        uses: ./.github/actions/setup-homebrew-with-bundler
+      - name: 🍺 Setup Homebrew
+        uses: Homebrew/actions/setup-homebrew@67ea3b6421dff421c27cb1217f4ca1fb3aa781ed # master # zizmor: ignore[stale-action-refs]
+        env:
+          HOMEBREW_IN_CONTAINER: 1
 
       - name: 🚰 Tap and switch branch
         run: |
