@@ -8,8 +8,8 @@ cask "freefilesync" do
   homepage "https://freefilesync.org/"
 
   livecheck do
-    url "https://freefilesync.org/archive.php"
-    regex(/FreeFileSync (\d+\.\d+)/)
+    url "https://freefilesync.org/download.php"
+    regex(/href=.*?FreeFileSync[._-]v?(\d+(?:\.\d+)+)(?:[._-]macOS)?\.zip/i)
   end
 
   auto_updates false
@@ -28,10 +28,18 @@ cask "freefilesync" do
         },
       ]
 
-  uninstall delete: "/Applications/RealTimeSync.app"
+  uninstall pkgutil: [
+              "org.freefilesync.pkg.FreeFileSync",
+              "org.freefilesync.pkg.RealTimeSync",
+            ],
+            delete:  "/usr/local/bin/freefilesync"
 
   zap trash: [
     "~/Library/Application Support/FreeFileSync",
     "~/Library/Preferences/org.freefilesync.FreeFileSync.plist",
   ]
+
+  caveats do
+    files_in_usr_local
+  end
 end
