@@ -64,7 +64,7 @@ jobs:
 
   detect-changed-packages:
     name: 🔍 Detect Changed Packages
-    runs-on: macOS-Latest
+    runs-on: Ubuntu-Latest
     timeout-minutes: 1
     outputs:
       packages: ${{ steps.collect.outputs.packages }}
