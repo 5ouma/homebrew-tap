@@ -53,14 +53,14 @@ jobs:
         if: ${{ steps.cache.outputs.cache-hit != 'true' }}
         run: brew install-bundler-gems
 
-      - name: 💈 Check files for conformance to Homebrew style guidelines
-        run: brew style --debug "$GITHUB_REPOSITORY"
+      - name: 💈 Check files for style guidelines
+        run: brew style -dv "$GITHUB_REPOSITORY"
 
       - name: ⚠️ Check if any files have Ruby issues
-        run: brew readall --verbose "$GITHUB_REPOSITORY"
+        run: brew readall -dv "$GITHUB_REPOSITORY"
 
-      - name: 📊 Check for Homebrew coding style violations
-        run: brew audit --debug --strict --tap="$GITHUB_REPOSITORY"
+      - name: 📊 Check for coding style violations
+        run: brew audit -dv --strict --tap="$GITHUB_REPOSITORY"
 
   detect-changed-packages:
     name: 🔍 Detect Changed Packages
