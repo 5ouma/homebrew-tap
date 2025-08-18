@@ -1,0 +1,21 @@
+name: 🔀 Auto Merge
+
+on:
+  pull_request:
+
+permissions: {}
+
+jobs:
+  auto-merge:
+    name: 🔀 Auto Merge
+    permissions:
+      pull-requests: write
+    if: ${{ github.event.pull_request.user.login == github.repository_owner && startsWith(github.head_ref, 'bump-') }}
+    runs-on: Ubuntu-Latest
+    timeout-minutes: 1
+
+    steps:
+      - name: 🔀 Enable Auto Merge
+        run: gh pr merge --auto "$GITHUB_HEAD_REF"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
