@@ -27,13 +27,13 @@ jobs:
     timeout-minutes: 3
 
     steps:
-      - name: 🚚 Checkout repository
+      - name: 🚚 Check out repository
         id: checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           persist-credentials: false
 
-      - name: 🍺 Setup Homebrew with Tap
+      - name: 🍺 Set up Homebrew with Tap
         id: homebrew
         uses: ./.github/actions/setup-homebrew-with-tap
         with:
@@ -70,13 +70,13 @@ jobs:
       packages: ${{ steps.collect.outputs.packages }}
 
     steps:
-      - name: 🚚 Checkout repository
+      - name: 🚚 Check out repository
         id: checkout
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
         with:
           persist-credentials: false
 
-      - name: 🍺 Setup Homebrew with Tap
+      - name: 🍺 Set up Homebrew with Tap
         uses: ./.github/actions/setup-homebrew-with-tap
         with:
           ref: ${{ steps.checkout.outputs.commit }}

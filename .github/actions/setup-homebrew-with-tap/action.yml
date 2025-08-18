@@ -1,5 +1,5 @@
-name: 🍺 Setup Homebrew with Tap
-description: Setup Homebrew and tap the repository at a specific ref
+name: 🍺 Set up Homebrew with Tap
+description: Set up Homebrew and tap the repository at a specific ref
 
 inputs:
   ref:
@@ -18,7 +18,7 @@ runs:
   using: composite
 
   steps:
-    - name: 🍺 Setup Homebrew
+    - name: 🍺 Set up Homebrew
       id: homebrew
       uses: Homebrew/actions/setup-homebrew@87d3af7a72e5ede081b6dafce1798551a74fb366 # master # zizmor: ignore[stale-action-refs]
       env:
