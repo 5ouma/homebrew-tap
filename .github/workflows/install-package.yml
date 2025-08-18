@@ -27,10 +27,10 @@ jobs:
         id: decide-os
         run: |
           os=('macOS-13' 'macOS-14' 'macOS-15')
-          "$MACOS_ONLY" || os+=('Ubuntu-Latest')
+          "$macosOnly" || os+=('Ubuntu-Latest')
           echo "os=$(jq -Rc 'split(" ")' <<<"${os[@]}")" | tee -a "$GITHUB_OUTPUT"
         env:
-          MACOS_ONLY: ${{ inputs.macos_only }}
+          macosOnly: ${{ inputs.macos_only }}
 
   install:
     name: ${{ startsWith(matrix.os, 'macOS') && '🍎' || '🐧' }} ${{ matrix.os }}
