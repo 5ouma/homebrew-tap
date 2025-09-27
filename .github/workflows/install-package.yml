@@ -26,7 +26,7 @@ jobs:
       - name: 🐧 Decide whether to install on Ubuntu
         id: decide-os
         run: |
-          os=('macOS-13' 'macOS-14' 'macOS-15')
+          os=('macOS-14' 'macOS-15')
           "$macosOnly" || os+=('Ubuntu-Latest')
           echo "os=$(jq -Rc 'split(" ")' <<<"${os[@]}")" | tee -a "$GITHUB_OUTPUT"
         env:
