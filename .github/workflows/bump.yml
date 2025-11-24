@@ -8,10 +8,8 @@ on:
 permissions: {}
 
 jobs:
-  bump-formula:
-    name: 🧾 Bump Formula
-    permissions:
-      pull-requests: write
+  bump-packages:
+    name: ✨ Bump Packages
     runs-on: Ubuntu-Latest
     timeout-minutes: 3
 
@@ -27,37 +25,17 @@ jobs:
         uses: ./.github/actions/setup-homebrew-with-tap
         with:
           ref: ${{ steps.checkout.outputs.commit }}
+          install-bundler-gems: true
 
-      - name: ✨ Version up Homebrew Formula
-        uses: dawidd6/action-homebrew-bump-formula@c5ddc585e75f0f750a8b4f610688b4bec9e80915 # v6
-        with:
-          token: ${{ secrets.TOKEN }}
-          tap: ${{ github.repository }}
-          livecheck: true
+      - name: 🐙 Configure Git User
+        run: |
+          git config --global user.name "$(gh api /user --jq='.name')"
+          git config --global user.email "$GITHUB_REPOSITORY_OWNER_ID+$GITHUB_REPOSITORY_OWNER@users.noreply.github.com"
+        env:
+          GH_TOKEN: ${{ secrets.TOKEN }}
 
-  bump-cask:
-    name: 🥫 Bump Cask
-    permissions:
-      pull-requests: write
-    runs-on: Ubuntu-Latest
-    timeout-minutes: 3
-
-    steps:
-      - name: 🚚 Check out repository
-        id: checkout
-        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
-        with:
-          persist-credentials: false
-
-      - name: 🍺 Set up Homebrew with Tap
-        id: homebrew
-        uses: ./.github/actions/setup-homebrew-with-tap
-        with:
-          ref: ${{ steps.checkout.outputs.commit }}
-
-      - name: ✨ Version up Homebrew Cask
-        uses: macauley/action-homebrew-bump-cask@445c42390d790569d938f9068d01af39ca030feb # v1.0.0
-        with:
-          token: ${{ secrets.TOKEN }}
-          tap: ${{ github.repository }}
-          livecheck: true
+      - name: ✨ Version up Homebrew Packages
+        run: brew bump --tap="$GITHUB_REPOSITORY" --open-pr --no-fork
+        env:
+          HOMEBREW_EVAL_ALL: true
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.TOKEN }}
