@@ -38,20 +38,10 @@ jobs:
         uses: ./.github/actions/setup-homebrew-with-tap
         with:
           ref: ${{ steps.checkout.outputs.commit }}
+          install-bundler-gems: true
 
       - name: 🧹 Cleanup Test Bot
         run: brew test-bot --verbose --only-cleanup-before
-
-      - name: 🫙 Cache Bundler RubyGems
-        id: cache
-        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
-        with:
-          path: ${{ steps.homebrew.outputs.gems-path }}
-          key: ${{ runner.os }}-rubygems-${{ steps.homebrew.outputs.gems-hash }}
-
-      - name: 💎 Install Bundler RubyGems
-        if: ${{ steps.cache.outputs.cache-hit != 'true' }}
-        run: brew install-bundler-gems
 
       - name: 💈 Check files for style guidelines
         run: brew style -dv "$GITHUB_REPOSITORY"

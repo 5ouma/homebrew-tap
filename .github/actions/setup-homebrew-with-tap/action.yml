@@ -5,14 +5,10 @@ inputs:
   ref:
     description: The ref to check out
     required: true
-
-outputs:
-  gems-path:
-    description: Homebrew's Ruby gems path
-    value: ${{ steps.homebrew.outputs.gems-path }}
-  gems-hash:
-    description: Homebrew's Ruby Gemfile.lock sha256sum
-    value: ${{ steps.homebrew.outputs.gems-hash }}
+  install-bundler-gems:
+    description: Whether to install Bundler RubyGems
+    required: false
+    default: "false"
 
 runs:
   using: composite
@@ -30,3 +26,16 @@ runs:
       env:
         tap: ${{ steps.homebrew.outputs.repository-path }}
         ref: ${{ inputs.ref }}
+
+    - name: 🫙 Cache Bundler RubyGems
+      id: cache
+      if: ${{ inputs.install-bundler-gems == 'true' }}
+      uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
+      with:
+        path: ${{ steps.homebrew.outputs.gems-path }}
+        key: ${{ runner.os }}-rubygems-${{ steps.homebrew.outputs.gems-hash }}
+
+    - name: 💎 Install Bundler RubyGems
+      if: ${{ inputs.install-bundler-gems == 'true' && steps.cache.outputs.cache-hit != 'true' }}
+      run: brew install-bundler-gems
+      shell: bash
