@@ -29,7 +29,7 @@ jobs:
           ref: ${{ steps.checkout.outputs.commit }}
 
       - name: ✨ Version up Homebrew Formula
-        uses: dawidd6/action-homebrew-bump-formula@8d494330bce4434918392df134ad3db1167904db # v4
+        uses: dawidd6/action-homebrew-bump-formula@c5ddc585e75f0f750a8b4f610688b4bec9e80915 # v6
         with:
           token: ${{ secrets.TOKEN }}
           tap: ${{ github.repository }}
