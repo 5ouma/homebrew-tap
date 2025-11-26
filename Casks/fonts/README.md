@@ -44,14 +44,6 @@ brew install font-inkling
 
 <br />
 
-### [🌱 LINE Seed JP](https://seed.line.me)
-
-```sh
-brew install font-line-seed-jp
-```
-
-<br />
-
 ### [🥥 Natadecoco gothic](https://kashika-labo.com/natadecoco-gothic)
 
 ```sh
