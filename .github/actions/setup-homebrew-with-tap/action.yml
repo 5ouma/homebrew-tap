@@ -16,7 +16,7 @@ runs:
   steps:
     - name: 🍺 Set up Homebrew
       id: homebrew
-      uses: Homebrew/actions/setup-homebrew@3b6242a62b1b25006b831c24cd733fe421ebaf60 # master # zizmor: ignore[stale-action-refs]
+      uses: Homebrew/actions/setup-homebrew@ac10627faf2a86ba938c7c70c9575470ca4144df # master # zizmor: ignore[stale-action-refs]
       env:
         HOMEBREW_IN_CONTAINER: 1
 
