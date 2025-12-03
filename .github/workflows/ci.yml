@@ -77,7 +77,7 @@ jobs:
         with:
           filters: |
             package:
-              - added|modified: "*.rb"
+              - added|modified: "**.rb"
             workflow: [.github/workflows/ci.yml, .github/workflows/install-package.yml, .github/actions/setup-homebrew-with-tap/action.yml]
           list-files: shell
 
