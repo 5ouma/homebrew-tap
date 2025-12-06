@@ -17,7 +17,7 @@ permissions: {}
 jobs:
   define-os:
     name: 🔍 Define OS
-    runs-on: Ubuntu-Latest
+    runs-on: Ubuntu-Slim
     timeout-minutes: 1
     outputs:
       os: ${{ steps.decide-os.outputs.os }}
