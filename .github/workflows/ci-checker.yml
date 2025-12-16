@@ -24,7 +24,7 @@ jobs:
   merge-pr:
     name: 🔀 Merge PR
     needs: merge-gatekeeper
-    if: ${{ github.event.pull_request.user.login == github.repository_owner && startsWith(github.head_ref, 'bump-') }}
+    if: ${{ (github.event.pull_request.user.login == github.repository_owner || github.event.pull_request.user.login == 'homebrewreleaser bot') && startsWith(github.head_ref, 'bump-') }}
     runs-on: Ubuntu-Slim
     timeout-minutes: 1
 
