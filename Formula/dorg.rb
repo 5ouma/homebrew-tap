@@ -5,13 +5,13 @@
 class Dorg < Formula
   desc "Organize macOS Dock Items"
   homepage "https://github.com/5ouma/dorg"
-  version "1.0.0"
+  version "1.1.0"
   license "MIT"
   depends_on :macos
 
   if Hardware::CPU.intel?
-    url "https://github.com/5ouma/dorg/releases/download/v1.0.0/dorg_Darwin_x86_64.tar.gz"
-    sha256 "8b4a6441772e43a2a68ca50a09c3794cc24bdfa1c950fa11f889b24431a059ba"
+    url "https://github.com/5ouma/dorg/releases/download/v1.1.0/dorg_Darwin_x86_64.tar.gz"
+    sha256 "83ec0e22117e233fd74422e8cbd813f56c2e719980fae3c5588fbf3505e35dc5"
 
     def install
       bin.install "dorg"
@@ -19,8 +19,8 @@ class Dorg < Formula
     end
   end
   if Hardware::CPU.arm?
-    url "https://github.com/5ouma/dorg/releases/download/v1.0.0/dorg_Darwin_arm64.tar.gz"
-    sha256 "fe534e5e915ac911360b3ed06b20343db091375f29a10bc26f6b45bb9191f513"
+    url "https://github.com/5ouma/dorg/releases/download/v1.1.0/dorg_Darwin_arm64.tar.gz"
+    sha256 "c0960e54327ca5f5392403dfc80de49723b865fbcf9e90c940d3f6b6d7f8a1e0"
 
     def install
       bin.install "dorg"
