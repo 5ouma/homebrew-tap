@@ -33,7 +33,7 @@ jobs:
           macosOnly: ${{ inputs.macos_only }}
 
   install:
-    name: ${{ startsWith(matrix.os, 'macOS') && '🍎' || '🐧' }} ${{ matrix.os }}
+    name: ${{ startsWith(matrix.os, 'macOS-') && '🍎' || '🐧' }} ${{ matrix.os }}
     needs: define-os
     runs-on: ${{ matrix.os }}
     timeout-minutes: 3
