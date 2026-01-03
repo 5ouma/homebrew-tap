@@ -33,7 +33,7 @@ runs:
       uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
       with:
         path: ${{ steps.homebrew.outputs.gems-path }}
-        key: ${{ runner.os }}-rubygems-${{ steps.homebrew.outputs.gems-hash }}
+        key: RubyGems-${{ runner.os }}-${{ steps.homebrew.outputs.gems-hash }}
 
     - name: 💎 Install Bundler RubyGems
       if: ${{ inputs.install-bundler-gems == 'true' && steps.cache.outputs.cache-hit != 'true' }}
