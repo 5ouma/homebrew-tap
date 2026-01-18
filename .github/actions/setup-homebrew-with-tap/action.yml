@@ -30,7 +30,7 @@ runs:
     - name: 🫙 Cache Bundler RubyGems
       id: cache
       if: ${{ inputs.install-bundler-gems == 'true' }}
-      uses: actions/cache@9255dc7a253b0ccc959486e2bca901246202afeb # v5.0.1
+      uses: actions/cache@8b402f58fbc84540c8b491a91e594a4576fec3d7 # v5.0.2
       with:
         path: ${{ steps.homebrew.outputs.gems-path }}
         key: RubyGems-${{ runner.os }}-${{ steps.homebrew.outputs.gems-hash }}
