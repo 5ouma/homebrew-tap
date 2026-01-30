@@ -1,7 +1,7 @@
 class GhPoi < Formula
   desc "Safely clean up your local branches"
   homepage "https://github.com/seachicken/gh-poi"
-  version "0.15.1"
+  version "0.15.2-pre0"
   license "MIT"
 
   if OS.mac?
@@ -29,8 +29,8 @@ class GhPoi < Formula
         bin.install "linux-arm64" => "gh-poi"
       end
     elsif Hardware::CPU.intel?
-      url "https://github.com/seachicken/gh-poi/releases/download/v0.15.1/linux-amd64"
-      sha256 "685690b118557d1e05468f0cb612e38a117cf4af69d8703f421446934ad98b69"
+      url "https://github.com/seachicken/gh-poi/releases/download/v0.15.2-pre0/linux-amd64"
+      sha256 "582a4561e82674ae85d7e202c7780c7a4325a756eeb314075415d2be625a109d"
 
       def install
         bin.install "linux-amd64" => "gh-poi"
