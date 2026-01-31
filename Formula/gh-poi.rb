@@ -1,41 +1,15 @@
 class GhPoi < Formula
   desc "Safely clean up your local branches"
   homepage "https://github.com/seachicken/gh-poi"
-  version "0.15.1"
+  url "https://github.com/seachicken/gh-poi/archive/refs/tags/v0.15.2.tar.gz"
+  sha256 "292c929b77a69234087a6b2c7d274059b10d5301aa140f40f4dc380858486221"
   license "MIT"
+  head "https://github.com/seachicken/gh-poi.git", branch: "main"
 
-  if OS.mac?
-    if Hardware::CPU.arm?
-      url "https://github.com/seachicken/gh-poi/releases/download/v#{version}/darwin-arm64"
-      sha256 "ad71a1e8f08520a2284b5c5c00d465ce831d4af521f81ca57df0f63ef0c7d64c"
+  depends_on "go" => :build
 
-      def install
-        bin.install "darwin-arm64" => "gh-poi"
-      end
-    elsif Hardware::CPU.intel?
-      url "https://github.com/seachicken/gh-poi/releases/download/v#{version}/darwin-amd64"
-      sha256 "80c865eaa5ad27c468b01b4d0a7b98686aaa926f24b13c05344ba5b21f474827"
-
-      def install
-        bin.install "darwin-amd64" => "gh-poi"
-      end
-    end
-  elsif OS.linux?
-    if Hardware::CPU.arm?
-      url "https://github.com/seachicken/gh-poi/releases/download/v#{version}/linux-arm64"
-      sha256 "c6e88781edfed5c50913263673fc5f1a20eb5357ddb009b60a79f290facf7517"
-
-      def install
-        bin.install "linux-arm64" => "gh-poi"
-      end
-    elsif Hardware::CPU.intel?
-      url "https://github.com/seachicken/gh-poi/releases/download/v#{version}/linux-amd64"
-      sha256 "685690b118557d1e05468f0cb612e38a117cf4af69d8703f421446934ad98b69"
-
-      def install
-        bin.install "linux-amd64" => "gh-poi"
-      end
-    end
+  def install
+    system "go", "build", *std_go_args(ldflags: "-s -w")
   end
 
   test do
