@@ -27,7 +27,7 @@ jobs:
         id: decide-os
         run: |
           os=('macOS-15' 'macOS-15-Intel')
-          "$macosOnly" || os+=('Ubuntu-24.0.4' 'Ubuntu-24.04-ARM')
+          "$macosOnly" || os+=('Ubuntu-24.04' 'Ubuntu-24.04-ARM')
           echo "os=$(jq -Rc 'split(" ")' <<<"${os[@]}")" | tee -a "$GITHUB_OUTPUT"
         env:
           macosOnly: ${{ inputs.macos_only }}
