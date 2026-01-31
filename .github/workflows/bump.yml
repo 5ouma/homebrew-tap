@@ -11,7 +11,7 @@ jobs:
   bump-packages:
     name: ✨ Bump Packages
     runs-on: Ubuntu-Latest
-    timeout-minutes: 3
+    timeout-minutes: 10
 
     steps:
       - name: 🚚 Check out repository
@@ -26,6 +26,9 @@ jobs:
         with:
           ref: ${{ steps.checkout.outputs.commit }}
           install-bundler-gems: true
+
+      - name: 📦 Install Dependencies
+        run: grep -Pho '(?<=depends_on ")[^"]+' -- **/*.rb | xargs brew install
 
       - name: 🐙 Configure Git User
         run: |
