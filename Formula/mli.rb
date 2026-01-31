@@ -4,7 +4,7 @@ class Mli < Formula
   url "https://github.com/5ouma/mli/archive/refs/tags/v0.5.0.tar.gz"
   sha256 "708ac0d044b066cadda7e1987ad4d571116c633984d68c1c7a136bdaec8082f7"
   license "MIT"
-  head "https://github.com/5ouma/mli/git", branch: "main"
+  head "https://github.com/5ouma/mli.git", branch: "main"
 
   depends_on "go" => :build
   depends_on :macos
