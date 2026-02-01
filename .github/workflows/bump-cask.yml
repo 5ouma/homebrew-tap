@@ -1,4 +1,4 @@
-name: ✨ Bump Packages
+name: ✨ Bump Casks
 
 on:
   schedule:
@@ -8,10 +8,10 @@ on:
 permissions: {}
 
 jobs:
-  bump-packages:
-    name: ✨ Bump Packages
+  bump-casks:
+    name: ✨ Bump Casks
     runs-on: Ubuntu-Latest
-    timeout-minutes: 10
+    timeout-minutes: 3
 
     steps:
       - name: 🚚 Check out repository
@@ -27,18 +27,15 @@ jobs:
           ref: ${{ steps.checkout.outputs.commit }}
           install-bundler-gems: true
 
-      - name: 📦 Install Dependencies
-        run: grep -Pho '(?<=depends_on ")[^"]+' -- **/*.rb | xargs brew install
-
-      - name: 🐙 Configure Git User
+      - name: 🐙 Configure Git user
         run: |
           git config --global user.name "$(gh api /user --jq='.name')"
           git config --global user.email "$GITHUB_REPOSITORY_OWNER_ID+$GITHUB_REPOSITORY_OWNER@users.noreply.github.com"
         env:
           GH_TOKEN: ${{ secrets.TOKEN }}
 
-      - name: ✨ Version up Homebrew Packages
-        run: brew bump --tap="$GITHUB_REPOSITORY" --open-pr --no-fork
+      - name: ✨ Version up Homebrew Casks
+        run: brew bump --tap="$GITHUB_REPOSITORY" --{cask,open-pr,no-fork}
         env:
           HOMEBREW_EVAL_ALL: true
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.TOKEN }}
