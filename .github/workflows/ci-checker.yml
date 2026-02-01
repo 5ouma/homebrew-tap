@@ -21,10 +21,32 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           self: 🛡️ Merge Gatekeeper
 
+  get-app-name:
+    name: 🤖 Get GitHub App Name
+    runs-on: Ubuntu-Slim
+    timeout-minutes: 1
+    outputs:
+      app-name: ${{ steps.output-app-name.outputs.app-name }}
+
+    steps:
+      - name: 💳 Create GitHub App Token
+        id: app-token
+        uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.PRIVATE_KEY }}
+          permission-metadata: read
+
+      - name: 📝 Output app name
+        id: output-app-name
+        run: echo "app-name=${APP_SLUG}[bot]" | tee -a "$GITHUB_OUTPUT"
+        env:
+          APP_SLUG: ${{ steps.app-token.outputs.app-slug }}
+
   merge-pr:
     name: 🔀 Merge PR
-    needs: merge-gatekeeper
-    if: ${{ github.event.pull_request.user.login == github.repository_owner && startsWith(github.head_ref, 'bump-') }}
+    needs: [merge-gatekeeper, get-app-name]
+    if: ${{ github.event.pull_request.user.login == needs.get-app-name.outputs.app-name && startsWith(github.head_ref, 'bump-') }}
     runs-on: Ubuntu-Slim
     timeout-minutes: 1
 

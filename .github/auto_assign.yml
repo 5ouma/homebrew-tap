@@ -1,4 +1,4 @@
 addReviewers: true
 addAssignees: author
 reviewers: [5ouma]
-skipUsers: ["renovate[bot]"]
+skipUsers: ["renovate[bot]", "5ouma[bot]"]
