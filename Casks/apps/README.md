@@ -17,3 +17,11 @@ brew install aseprite
 ```sh
 brew install freefilesync
 ```
+
+<br />
+
+### [♪ JiBA](https://jiba.hee.ink)
+
+```sh
+brew install jiba
+```
