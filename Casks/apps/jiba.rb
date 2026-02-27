@@ -8,8 +8,10 @@ cask "jiba" do
   homepage "https://jiba.hee.ink/"
 
   livecheck do
-    url "https://jiba.hee.ink"
-    regex(/JiBA-(\d+\.\d+\.\d+)\.dmg/)
+    url "https://hee.ink/updates/stable/latest.json"
+    strategy :json do |json|
+      json["version"]
+    end
   end
 
   app "JiBA.app"
