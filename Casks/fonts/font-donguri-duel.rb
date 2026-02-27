@@ -7,5 +7,9 @@ cask "font-donguri-duel" do
   desc "ふとじころころピクセルフォント"
   homepage "https://hicchicc.github.io/00ff"
 
+  livecheck do
+    skip
+  end
+
   font "x10y12pxDonguriDuel.ttf"
 end

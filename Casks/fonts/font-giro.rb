@@ -8,6 +8,10 @@ cask "font-giro" do
   desc "Giro is an informal sans serif typeface"
   homepage "https://www.marcelomagalhaes.net/"
 
+  livecheck do
+    skip
+  end
+
   font "girolight001.otf"
   font "girooutline001.otf"
 end

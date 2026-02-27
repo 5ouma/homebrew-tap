@@ -7,5 +7,9 @@ cask "font-rolachan" do
   desc "幾何学を基調とした都会的なゴシックフォント"
   homepage "https://ozawa.design/store/rolachan/"
 
+  livecheck do
+    skip
+  end
+
   font "ROLAchan/ROLAchan-Regular.otf"
 end

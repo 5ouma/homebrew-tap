@@ -7,6 +7,10 @@ cask "font-bestten" do
   desc "10×10のドットフォント"
   homepage "https://flop.fanbox.cc/posts/1918861"
 
+  livecheck do
+    skip
+  end
+
   font "Best10-FONT/BestTen-CRT.otf"
   font "Best10-FONT/BestTen-DOT.otf"
 end

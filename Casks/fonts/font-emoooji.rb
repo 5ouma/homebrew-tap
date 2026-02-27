@@ -7,5 +7,9 @@ cask "font-emoooji" do
   desc "三色団子大学のメンバーアイコンがあのスマイリーになって登場！"
   homepage "https://rarapon.net/download/other/emoooji"
 
+  livecheck do
+    skip
+  end
+
   font "Emoooji-Regular-SVG.otf"
 end

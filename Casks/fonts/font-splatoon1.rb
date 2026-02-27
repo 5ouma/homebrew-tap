@@ -7,5 +7,9 @@ cask "font-splatoon1" do
   desc "Official Splatoon fonts ripped from the SplatNet 2 app"
   homepage "https://frozenpandaman.github.io/inkling.html"
 
+  livecheck do
+    skip
+  end
+
   font "Splatoon1.otf"
 end

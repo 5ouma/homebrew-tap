@@ -8,5 +8,9 @@ cask "font-ndot" do
   desc "Nothing original pixel font in Nothing OS"
   homepage "https://nothing.tech/"
 
+  livecheck do
+    skip
+  end
+
   font "Ndot-55.otf"
 end
