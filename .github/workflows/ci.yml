@@ -84,19 +84,16 @@ jobs:
       - name: 📡 Collect package information
         id: collect
         run: |
-          if "$workflowChanged" || "$scheduled"; then
-            packages="$(find "$GITHUB_WORKSPACE" -name '**.rb')"
-          else
-            packages="$changedPackages"
-          fi
-          for package in $packages; do
-            name="$(echo "$package" | xargs basename | sed 's/\.rb$//')"
-            full_name="${GITHUB_REPOSITORY/homebrew-}/$name"
-            if [[ "$package" =~ Casks ]] || (brew info "$full_name" | grep -q 'Required: macOS'); then
-              macos_only="yes"
-            fi
-            echo "$name,$full_name,$macos_only" | jq -Rc 'split(",") | { name: .[0], full_name: .[1], macos_only: .[2] | test("yes") }'
-          done | echo "packages=$(jq -sc)" | tee -a "$GITHUB_OUTPUT"
+          echo "packages=$(jq -c '[
+            (.formulae[] | { name: .name, macos_only: (.requirements | any(.name == "macos")), full_name: .full_name }),
+            (.casks[] | { name: .name[0], macos_only: true, full_name: .full_token })
+          ]' <<<"$(
+            if "$workflowChanged" || "$scheduled"; then
+              find "$GITHUB_WORKSPACE" -name '*.rb'
+            else
+              echo "$changedPackages"
+            fi | xargs basename -s .rb | xargs brew info --json=v2
+          )")" | tee -a "$GITHUB_OUTPUT"
         env:
           changedPackages: ${{ steps.filter.outputs.package_files }}
           workflowChanged: ${{ steps.filter.outputs.workflow }}
