@@ -11,6 +11,7 @@ jobs:
   bump-casks:
     name: ✨ Bump Casks
     runs-on: Ubuntu-Latest
+    environment: Bump-Cask
     timeout-minutes: 3
 
     steps:
@@ -31,7 +32,7 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
         with:
-          app-id: ${{ secrets.APP_ID }}
+          app-id: ${{ vars.APP_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
           permission-contents: write
           permission-pull-requests: write
