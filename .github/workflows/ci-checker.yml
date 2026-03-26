@@ -24,7 +24,9 @@ jobs:
   get-app-name:
     name: 🤖 Get GitHub App Name
     runs-on: Ubuntu-Slim
-    environment: CI-Checker
+    environment:
+      name: CI-Checker
+      deployment: false
     timeout-minutes: 1
     outputs:
       app-name: ${{ steps.output-app-name.outputs.app-name }}
@@ -49,7 +51,9 @@ jobs:
     needs: [merge-gatekeeper, get-app-name]
     if: ${{ github.event.pull_request.user.login == needs.get-app-name.outputs.app-name && startsWith(github.head_ref, 'bump-') }}
     runs-on: Ubuntu-Slim
-    environment: CI-Checker
+    environment:
+      name: CI-Checker
+      deployment: false
     timeout-minutes: 1
 
     steps:

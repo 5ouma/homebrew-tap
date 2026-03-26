@@ -11,7 +11,9 @@ jobs:
   bump-casks:
     name: ✨ Bump Casks
     runs-on: Ubuntu-Latest
-    environment: Bump-Cask
+    environment:
+      name: Bump-Cask
+      deployment: false
     timeout-minutes: 3
 
     steps:
