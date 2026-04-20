@@ -6,14 +6,12 @@ on:
       - main
     paths:
       - "**.rb"
-      - .github/workflows/ci.yml
-      - .github/workflows/install-package.yml
+      - .github/workflows/*.yml
       - .github/actions/setup-homebrew-with-tap/action.yml
   pull_request:
     paths:
       - "**.rb"
-      - .github/workflows/ci.yml
-      - .github/workflows/install-package.yml
+      - .github/workflows/*.yml
       - .github/actions/setup-homebrew-with-tap/action.yml
   schedule:
     - cron: 0 0 * * SAT
@@ -52,8 +50,34 @@ jobs:
       - name: 📊 Check for coding style violations
         run: brew audit -dv --strict --tap="$GITHUB_REPOSITORY"
 
-  detect-changed-packages:
-    name: 🔍 Detect Changed Packages
+  detect-changed-files:
+    name: 🔍 Detect Changed Files
+    runs-on: Ubuntu-Latest
+    timeout-minutes: 1
+    outputs:
+      packages: ${{ steps.filter.outputs.package_files }}
+      workflowChanged: ${{ steps.filter.outputs.workflow }}
+
+    steps:
+      - name: 🚚 Check out repository
+        id: checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: 🔄 Filter the changed files
+        id: filter
+        uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4.0.1
+        with:
+          filters: |
+            package: [added|modified: "**.rb"]
+            workflow: [.github/workflows/ci.yml, .github/workflows/install-package.yml, .github/actions/setup-homebrew-with-tap/action.yml]
+          list-files: shell
+
+  collect-package-information:
+    name: 📡 Collect package information
+    needs: detect-changed-files
+    if: ${{ needs.detect-changed-files.outputs.packages != '' || needs.detect-changed-files.outputs.workflowChanged == 'true' || github.event_name == 'schedule' }}
     runs-on: Ubuntu-Latest
     timeout-minutes: 1
     outputs:
@@ -71,16 +95,6 @@ jobs:
         with:
           ref: ${{ steps.checkout.outputs.commit }}
 
-      - name: 🔄 Filter the changed files
-        id: filter
-        uses: dorny/paths-filter@fbd0ab8f3e69293af611ebaee6363fc25e6d187d # v4.0.1
-        with:
-          filters: |
-            package:
-              - added|modified: "**.rb"
-            workflow: [.github/workflows/ci.yml, .github/workflows/install-package.yml, .github/actions/setup-homebrew-with-tap/action.yml]
-          list-files: shell
-
       - name: 📡 Collect package information
         id: collect
         run: |
@@ -88,20 +102,19 @@ jobs:
             (.formulae[] | { name: .name, macos_only: (.requirements | any(.name == "macos")), full_name: .full_name }),
             (.casks[] | { name: .name[0], macos_only: true, full_name: .full_token })
           ]' <<<"$(
-            if "$workflowChanged" || "$scheduled"; then
+            if "$all"; then
               find "$GITHUB_WORKSPACE" -name '*.rb'
             else
               echo "$changedPackages"
             fi | xargs basename -s .rb | xargs brew info --json=v2
           )")" | tee -a "$GITHUB_OUTPUT"
         env:
-          changedPackages: ${{ steps.filter.outputs.package_files }}
-          workflowChanged: ${{ steps.filter.outputs.workflow }}
-          scheduled: ${{ github.event_name == 'schedule' }}
+          changedPackages: ${{ needs.detect-changed-files.outputs.packages }}
+          all: ${{ needs.detect-changed-files.outputs.workflowChanged || github.event_name == 'schedule' }}
 
   install:
     name: 📥 Install ${{ matrix.package.name }}
-    needs: detect-changed-packages
+    needs: collect-package-information
     uses: ./.github/workflows/install-package.yml
     with:
       package: ${{ matrix.package.full_name }}
@@ -109,4 +122,4 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        package: ${{ fromJson(needs.detect-changed-packages.outputs.packages) }}
+        package: ${{ fromJson(needs.collect-package-information.outputs.packages) }}
