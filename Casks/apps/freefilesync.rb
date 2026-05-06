@@ -12,7 +12,7 @@ cask "freefilesync" do
     regex(/href=.*?FreeFileSync[._-]v?(\d+(?:\.\d+)+)(?:[._-]macOS)?\.zip/i)
   end
 
-  auto_updates false
+  depends_on :macos
 
   pkg "FreeFileSync_#{version}.pkg",
       choices: [
@@ -28,10 +28,7 @@ cask "freefilesync" do
         },
       ]
 
-  uninstall pkgutil: [
-              "org.freefilesync.pkg.FreeFileSync",
-              "org.freefilesync.pkg.RealTimeSync",
-            ],
+  uninstall pkgutil: "org.freefilesync.pkg.FreeFileSync",
             delete:  "/usr/local/bin/freefilesync"
 
   zap trash: [
