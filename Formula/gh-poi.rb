@@ -9,10 +9,11 @@ class GhPoi < Formula
   depends_on "go" => :build
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w")
+    ENV["CGO_ENABLED"] = "0"
+    system "go", "build", *std_go_args(ldflags: "-s")
   end
 
   test do
-    system "#{bin}/#{name}", "-v"
+    system "#{bin}/#{name}", "-h"
   end
 end

@@ -10,7 +10,7 @@ class Mli < Formula
   depends_on :macos
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w")
+    system "go", "build", *std_go_args(ldflags: "-s")
     generate_completions_from_executable("#{bin}/#{name}", "completion")
   end
 
