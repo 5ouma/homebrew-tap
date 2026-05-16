@@ -7,6 +7,10 @@ on:
 
 permissions: {}
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.schedule || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   bump-casks:
     name: ✨ Bump Casks
