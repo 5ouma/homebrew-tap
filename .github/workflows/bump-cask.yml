@@ -54,5 +54,4 @@ jobs:
       - name: ✨ Version up Homebrew Casks
         run: brew bump --tap="$GITHUB_REPOSITORY" --{cask,open-pr,no-fork}
         env:
-          HOMEBREW_EVAL_ALL: true
           HOMEBREW_GITHUB_API_TOKEN: ${{ steps.app-token.outputs.token }}

@@ -27,6 +27,10 @@ runs:
         tap: ${{ steps.homebrew.outputs.repository-path }}
         ref: ${{ inputs.ref }}
 
+    - name: 🔒 Trust the tap
+      run: brew trust "$GITHUB_REPOSITORY"
+      shell: bash
+
     - name: 🫙 Cache Bundler RubyGems
       id: cache
       if: ${{ inputs.install-bundler-gems == 'true' }}
