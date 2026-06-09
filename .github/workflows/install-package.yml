@@ -58,3 +58,4 @@ jobs:
         run: brew install --verbose "$package"
         env:
           package: ${{ inputs.package }}
+          HOMEBREW_NO_SANDBOX_LINUX: 1
