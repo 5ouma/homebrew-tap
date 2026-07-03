@@ -1,8 +1,8 @@
 class Mli < Formula
   desc "Manage macOS Login Items"
   homepage "https://github.com/5ouma/mli"
-  url "https://github.com/5ouma/mli/archive/refs/tags/v0.5.0.tar.gz"
-  sha256 "708ac0d044b066cadda7e1987ad4d571116c633984d68c1c7a136bdaec8082f7"
+  url "https://github.com/5ouma/mli/archive/refs/tags/v0.5.1.tar.gz"
+  sha256 "efae770f996843f20f3d5ba3fb231bf5d9c5ea88c4a1f9268ddaf7186eb2f2d1"
   license "MIT"
   head "https://github.com/5ouma/mli.git", branch: "main"
 
