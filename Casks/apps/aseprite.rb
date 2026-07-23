@@ -2,7 +2,7 @@ cask "aseprite" do
   version "1.3.17.2"
   sha256 "47acbeeef99d22aa183dec6dbba69b73c3fe3594dfcfec001da64581d3153100"
 
-  url "https://www.aseprite.org/downloads/trial/Aseprite-v#{version}-trial-macOS.dmg"
+  url "https://www.aseprite.org/downloads/trial/v#{version}/Aseprite-v#{version}-trial-macOS.dmg"
   name "Aseprite"
   desc "Animated Sprite Editor & Pixel Art Tool"
   homepage "https://www.aseprite.org/"
