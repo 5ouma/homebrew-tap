@@ -18,6 +18,8 @@ brew install aseprite
 brew install freefilesync
 ```
 
+<br />
+
 ### [🎮 GameHub](https://www.gamemac.com)
 
 ```sh
