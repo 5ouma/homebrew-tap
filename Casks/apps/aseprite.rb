@@ -13,7 +13,7 @@ cask "aseprite" do
   end
 
   auto_updates false
-  depends_on :macos
+  depends_on macos: :big_sur
 
   app "Aseprite.app"
 
