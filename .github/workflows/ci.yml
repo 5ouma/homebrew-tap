@@ -103,8 +103,8 @@ jobs:
         id: collect
         run: |
           echo "packages=$(jq -c '[
-            (.formulae[] | { name: .name, macos_only: (.requirements | any(.name == "macos")), full_name: .full_name }),
-            (.casks[] | { name: .name[0], macos_only: true, full_name: .full_token })
+            (.formulae[] | { name: .name, macos_only: .requirements | any(.name == "macos"), full_name: .full_name }),
+            (.casks[] | { name: .name[0], macos_only: .depends_on | has("macos"), full_name: .full_token })
           ]' <<<"$(
             if "$all"; then
               find "$GITHUB_WORKSPACE" -name '*.rb'
