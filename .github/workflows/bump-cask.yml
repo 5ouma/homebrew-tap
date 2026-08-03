@@ -14,7 +14,7 @@ concurrency:
 jobs:
   bump-casks:
     name: ✨ Bump Casks
-    runs-on: Ubuntu-Latest
+    runs-on: macOS-Latest
     environment:
       name: Bump-Cask
       deployment: false
