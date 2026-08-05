@@ -1,0 +1,92 @@
+{
+  "name": "mli",
+  "full_name": "5ouma/tap/mli",
+  "tap": "5ouma/tap",
+  "oldnames": [],
+  "aliases": [],
+  "versioned_formulae": [],
+  "desc": "Manage macOS Login Items",
+  "license": "MIT",
+  "homepage": "https://github.com/5ouma/mli",
+  "versions": {
+    "stable": "0.5.1",
+    "head": "HEAD",
+    "bottle": false
+  },
+  "urls": {
+    "stable": {
+      "url": "https://github.com/5ouma/mli/archive/refs/tags/v0.5.1.tar.gz",
+      "tag": null,
+      "revision": null,
+      "using": null,
+      "checksum": "efae770f996843f20f3d5ba3fb231bf5d9c5ea88c4a1f9268ddaf7186eb2f2d1"
+    },
+    "head": {
+      "url": "https://github.com/5ouma/mli.git",
+      "branch": "main",
+      "using": null
+    }
+  },
+  "patches": [],
+  "revision": 0,
+  "version_scheme": 0,
+  "compatibility_version": null,
+  "autobump": true,
+  "no_autobump_message": null,
+  "skip_livecheck": false,
+  "bottle": {},
+  "pour_bottle_only_if": null,
+  "keg_only": false,
+  "keg_only_reason": null,
+  "options": [],
+  "build_dependencies": [
+    "go"
+  ],
+  "dependencies": [],
+  "test_dependencies": [],
+  "recommended_dependencies": [],
+  "optional_dependencies": [],
+  "uses_from_macos": [],
+  "uses_from_macos_bounds": [],
+  "requirements": [
+    {
+      "name": "macos",
+      "cask": null,
+      "download": null,
+      "version": null,
+      "contexts": [],
+      "specs": [
+        "stable",
+        "head"
+      ]
+    }
+  ],
+  "conflicts_with": [],
+  "conflicts_with_reasons": [],
+  "link_overwrite": [],
+  "caveats": null,
+  "installed": [],
+  "linked_keg": null,
+  "pinned": false,
+  "outdated": false,
+  "deprecated": false,
+  "deprecation_date": null,
+  "deprecation_reason": null,
+  "deprecation_replacement_formula": null,
+  "deprecation_replacement_cask": null,
+  "deprecate_args": null,
+  "disabled": false,
+  "disable_date": null,
+  "disable_reason": null,
+  "disable_replacement_formula": null,
+  "disable_replacement_cask": null,
+  "disable_args": null,
+  "post_install_steps": [],
+  "post_install_defined": false,
+  "service": null,
+  "tap_git_head": "HEAD",
+  "ruby_source_path": "Formula/mli.rb",
+  "ruby_source_checksum": {
+    "sha256": "bce2f2d098fba45c0c70c772183f9ac5c9d9a104dbb451b1681d9598f6335d8e"
+  }
+}
