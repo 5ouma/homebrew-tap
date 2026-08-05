@@ -1,0 +1,64 @@
+{
+  "token": "font-giro",
+  "full_token": "font-giro",
+  "old_tokens": [],
+  "tap": null,
+  "name": [
+    "Giro Light"
+  ],
+  "desc": "Giro is an informal sans serif typeface",
+  "homepage": "https://www.marcelomagalhaes.net/",
+  "url": "https://dl.dafont.com/dl/?f=giro",
+  "url_specs": {},
+  "version": "latest",
+  "autobump": false,
+  "no_autobump_message": "latest_version",
+  "skip_livecheck": true,
+  "installed": null,
+  "installed_time": null,
+  "bundle_version": null,
+  "bundle_short_version": null,
+  "pinned": false,
+  "pinned_version": null,
+  "outdated": false,
+  "sha256": "no_check",
+  "artifacts": [
+    {
+      "font": [
+        "girolight001.otf"
+      ],
+      "target": "~/Library/Fonts/girolight001.otf"
+    },
+    {
+      "font": [
+        "girooutline001.otf"
+      ],
+      "target": "~/Library/Fonts/girooutline001.otf"
+    }
+  ],
+  "caveats": null,
+  "caveats_rosetta": null,
+  "depends_on": {},
+  "conflicts_with": null,
+  "container": null,
+  "rename": [],
+  "auto_updates": null,
+  "deprecated": false,
+  "deprecation_date": null,
+  "deprecation_reason": null,
+  "deprecation_replacement_formula": null,
+  "deprecation_replacement_cask": null,
+  "deprecate_args": null,
+  "disabled": false,
+  "disable_date": null,
+  "disable_reason": null,
+  "disable_replacement_formula": null,
+  "disable_replacement_cask": null,
+  "disable_args": null,
+  "tap_git_head": null,
+  "languages": [],
+  "ruby_source_path": null,
+  "ruby_source_checksum": {
+    "sha256": null
+  }
+}

@@ -43,13 +43,15 @@ jobs:
           permission-contents: write
           permission-pull-requests: write
 
-      - name: 🐙 Configure Git user
+      - name: 🐙 Configure Git
         run: |
           git config --global user.name "${APP_SLUG}[bot]"
           git config --global user.email "$(gh api "/users/${APP_SLUG}[bot]" --jq='.id')+${APP_SLUG}[bot]@users.noreply.github.com"
+          cp scripts/pre-commit "$tap/.git/hooks/pre-commit"
         env:
           GH_TOKEN: ${{ steps.app-token.outputs.token }}
           APP_SLUG: ${{ steps.app-token.outputs.app-slug}}
+          tap: ${{ steps.homebrew.outputs.repository-path }}
 
       - name: ✨ Version up Homebrew Casks
         run: brew bump --tap="$GITHUB_REPOSITORY" --{cask,open-pr,no-fork}

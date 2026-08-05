@@ -1,0 +1,77 @@
+{
+  "token": "aseprite",
+  "full_token": "aseprite",
+  "old_tokens": [],
+  "tap": null,
+  "name": [
+    "Aseprite"
+  ],
+  "desc": "Animated Sprite Editor & Pixel Art Tool",
+  "homepage": "https://www.aseprite.org/",
+  "url": "https://www.aseprite.org/downloads/trial/v1.3.18.1/Aseprite-v1.3.18.1-trial-macOS.dmg",
+  "url_specs": {},
+  "version": "1.3.18.1",
+  "autobump": true,
+  "no_autobump_message": null,
+  "skip_livecheck": false,
+  "installed": null,
+  "installed_time": null,
+  "bundle_version": null,
+  "bundle_short_version": null,
+  "pinned": false,
+  "pinned_version": null,
+  "outdated": false,
+  "sha256": "28643a08447978e85cdc3d0a956040ea805f4f5aad42482a4a497441e49a42fe",
+  "artifacts": [
+    {
+      "app": [
+        "Aseprite.app"
+      ],
+      "target": "/Applications/Aseprite.app"
+    },
+    {
+      "zap": [
+        {
+          "trash": [
+            "~/Library/Application Support/Aseprite",
+            "~/Library/Logs/Homebrew/aseprite",
+            "~/Library/Preferences/Aseprite.plist",
+            "~/Library/Preferences/org.aseprite.Aseprite.plist",
+            "~/Library/Saved Application State/org.aseprite.Aseprite.savedState"
+          ]
+        }
+      ]
+    }
+  ],
+  "caveats": null,
+  "caveats_rosetta": null,
+  "depends_on": {
+    "macos": {
+      ">=": [
+        "11"
+      ]
+    }
+  },
+  "conflicts_with": null,
+  "container": null,
+  "rename": [],
+  "auto_updates": false,
+  "deprecated": false,
+  "deprecation_date": null,
+  "deprecation_reason": null,
+  "deprecation_replacement_formula": null,
+  "deprecation_replacement_cask": null,
+  "deprecate_args": null,
+  "disabled": false,
+  "disable_date": null,
+  "disable_reason": null,
+  "disable_replacement_formula": null,
+  "disable_replacement_cask": null,
+  "disable_args": null,
+  "tap_git_head": null,
+  "languages": [],
+  "ruby_source_path": null,
+  "ruby_source_checksum": {
+    "sha256": null
+  }
+}

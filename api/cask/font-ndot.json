@@ -1,0 +1,58 @@
+{
+  "token": "font-ndot",
+  "full_token": "font-ndot",
+  "old_tokens": [],
+  "tap": null,
+  "name": [
+    "Ndot"
+  ],
+  "desc": "Nothing original pixel font in Nothing OS",
+  "homepage": "https://nothing.tech/",
+  "url": "https://cdn.shopify.com/oxygen-v2/43495/38485/80939/1952643/fonts/Ndot-55.otf",
+  "url_specs": {},
+  "version": "latest",
+  "autobump": false,
+  "no_autobump_message": "latest_version",
+  "skip_livecheck": true,
+  "installed": null,
+  "installed_time": null,
+  "bundle_version": null,
+  "bundle_short_version": null,
+  "pinned": false,
+  "pinned_version": null,
+  "outdated": false,
+  "sha256": "no_check",
+  "artifacts": [
+    {
+      "font": [
+        "Ndot-55.otf"
+      ],
+      "target": "~/Library/Fonts/Ndot-55.otf"
+    }
+  ],
+  "caveats": null,
+  "caveats_rosetta": null,
+  "depends_on": {},
+  "conflicts_with": null,
+  "container": null,
+  "rename": [],
+  "auto_updates": null,
+  "deprecated": false,
+  "deprecation_date": null,
+  "deprecation_reason": null,
+  "deprecation_replacement_formula": null,
+  "deprecation_replacement_cask": null,
+  "deprecate_args": null,
+  "disabled": false,
+  "disable_date": null,
+  "disable_reason": null,
+  "disable_replacement_formula": null,
+  "disable_replacement_cask": null,
+  "disable_args": null,
+  "tap_git_head": null,
+  "languages": [],
+  "ruby_source_path": null,
+  "ruby_source_checksum": {
+    "sha256": null
+  }
+}

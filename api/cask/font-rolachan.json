@@ -1,0 +1,58 @@
+{
+  "token": "font-rolachan",
+  "full_token": "font-rolachan",
+  "old_tokens": [],
+  "tap": null,
+  "name": [
+    "ROLAchan Regular"
+  ],
+  "desc": "幾何学を基調とした都会的なゴシックフォント",
+  "homepage": "https://ozawa.design/store/rolachan/",
+  "url": "https://ozawa.design/download/rolachan/?wpdmdl=635",
+  "url_specs": {},
+  "version": "latest",
+  "autobump": false,
+  "no_autobump_message": "latest_version",
+  "skip_livecheck": true,
+  "installed": null,
+  "installed_time": null,
+  "bundle_version": null,
+  "bundle_short_version": null,
+  "pinned": false,
+  "pinned_version": null,
+  "outdated": false,
+  "sha256": "no_check",
+  "artifacts": [
+    {
+      "font": [
+        "ROLAchan/ROLAchan-Regular.otf"
+      ],
+      "target": "~/Library/Fonts/ROLAchan-Regular.otf"
+    }
+  ],
+  "caveats": null,
+  "caveats_rosetta": null,
+  "depends_on": {},
+  "conflicts_with": null,
+  "container": null,
+  "rename": [],
+  "auto_updates": null,
+  "deprecated": false,
+  "deprecation_date": null,
+  "deprecation_reason": null,
+  "deprecation_replacement_formula": null,
+  "deprecation_replacement_cask": null,
+  "deprecate_args": null,
+  "disabled": false,
+  "disable_date": null,
+  "disable_reason": null,
+  "disable_replacement_formula": null,
+  "disable_replacement_cask": null,
+  "disable_args": null,
+  "tap_git_head": null,
+  "languages": [],
+  "ruby_source_path": null,
+  "ruby_source_checksum": {
+    "sha256": null
+  }
+}

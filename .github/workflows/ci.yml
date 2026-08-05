@@ -54,6 +54,9 @@ jobs:
       - name: 📊 Check for coding style violations
         run: brew audit -dv --strict --tap="$GITHUB_REPOSITORY"
 
+      - name: 📄 Check generated JSON is up-to-date
+        run: brew ruby scripts/generate_cask_json.rb
+
   detect-changed-files:
     name: 🔍 Detect Changed Files
     runs-on: Ubuntu-Latest
@@ -107,7 +110,7 @@ jobs:
             (.casks[] | { name: .name[0], macos_only: .depends_on | has("macos"), full_name: .full_token })
           ]' <<<"$(
             if "$all"; then
-              find "$GITHUB_WORKSPACE" -name '*.rb'
+              find "$GITHUB_WORKSPACE"/{Casks,Formula} -name '*.rb'
             else
               echo "$changedPackages"
             fi | xargs basename -s .rb | xargs brew info --json=v2

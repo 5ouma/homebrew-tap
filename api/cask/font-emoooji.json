@@ -1,0 +1,58 @@
+{
+  "token": "font-emoooji",
+  "full_token": "font-emoooji",
+  "old_tokens": [],
+  "tap": null,
+  "name": [
+    "Emoooji"
+  ],
+  "desc": "三色団子大学のメンバーアイコンがあのスマイリーになって登場！",
+  "homepage": "https://rarapon.net/download/other/emoooji",
+  "url": "https://rarapon.net/download/other/emoooji/data/Emoooji-Regular-SVG.otf",
+  "url_specs": {},
+  "version": "latest",
+  "autobump": false,
+  "no_autobump_message": "latest_version",
+  "skip_livecheck": true,
+  "installed": null,
+  "installed_time": null,
+  "bundle_version": null,
+  "bundle_short_version": null,
+  "pinned": false,
+  "pinned_version": null,
+  "outdated": false,
+  "sha256": "no_check",
+  "artifacts": [
+    {
+      "font": [
+        "Emoooji-Regular-SVG.otf"
+      ],
+      "target": "~/Library/Fonts/Emoooji-Regular-SVG.otf"
+    }
+  ],
+  "caveats": null,
+  "caveats_rosetta": null,
+  "depends_on": {},
+  "conflicts_with": null,
+  "container": null,
+  "rename": [],
+  "auto_updates": null,
+  "deprecated": false,
+  "deprecation_date": null,
+  "deprecation_reason": null,
+  "deprecation_replacement_formula": null,
+  "deprecation_replacement_cask": null,
+  "deprecate_args": null,
+  "disabled": false,
+  "disable_date": null,
+  "disable_reason": null,
+  "disable_replacement_formula": null,
+  "disable_replacement_cask": null,
+  "disable_args": null,
+  "tap_git_head": null,
+  "languages": [],
+  "ruby_source_path": null,
+  "ruby_source_checksum": {
+    "sha256": null
+  }
+}
