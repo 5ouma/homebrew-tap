@@ -9,7 +9,9 @@
   "desc": "Giro is an informal sans serif typeface",
   "homepage": "https://www.marcelomagalhaes.net/",
   "url": "https://dl.dafont.com/dl/?f=giro",
-  "url_specs": {},
+  "url_specs": {
+    "verified": "dl.dafont.com"
+  },
   "version": "latest",
   "autobump": false,
   "no_autobump_message": "latest_version",
