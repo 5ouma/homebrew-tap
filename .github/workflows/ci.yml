@@ -58,6 +58,7 @@ jobs:
         run: |
           brew ruby scripts/generate_formula_json.rb "$GITHUB_REPOSITORY"
           brew ruby scripts/generate_cask_json.rb
+          git diff --exit-code
 
   detect-changed-files:
     name: 🔍 Detect Changed Files

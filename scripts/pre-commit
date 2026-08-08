@@ -2,6 +2,6 @@
 
 set -euo pipefail
 
-brew ruby scripts/generate_formula_json.rb "$GITHUB_REPOSITORY" || :
-brew ruby scripts/generate_cask_json.rb || :
+brew ruby scripts/generate_formula_json.rb "$GITHUB_REPOSITORY"
+brew ruby scripts/generate_cask_json.rb
 git add api/{formula,cask}/*.json

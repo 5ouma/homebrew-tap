@@ -4,8 +4,6 @@
 require "json"
 require "cask"
 
-changed = false
-
 Pathname("Casks").glob("**/*.rb").each do |path|
   loader = Object.new
   loader.define_singleton_method(:cask) { |token, &block| @cask = Cask::Cask.new(token, &block) }
@@ -25,10 +23,10 @@ Pathname("Casks").glob("**/*.rb").each do |path|
   json = "#{JSON.pretty_generate(data)}\n"
   file = Pathname("api/cask").tap(&:mkpath).join("#{cask.token}.json")
 
-  changed ||= file.exist? && file.read != json
-  file.write(json)
-
-  puts "Generated #{file}"
+  if file.exist? && file.read == json
+    puts "Skipped #{file}"
+  else
+    file.write(json)
+    puts "Generated #{file}"
+  end
 end
-
-exit 1 if changed

@@ -6,7 +6,6 @@ require "formulary"
 require "tap"
 
 root = Pathname(__dir__).parent.expand_path
-changed = false
 
 root.join("Formula").glob("**/*.rb").each do |path|
   token = path.basename(".rb").to_s
@@ -25,10 +24,10 @@ root.join("Formula").glob("**/*.rb").each do |path|
   json = "#{JSON.pretty_generate(data)}\n"
   file = root.join("api/formula").tap(&:mkpath).join("#{formula.name}.json")
 
-  changed ||= file.exist? && file.read != json
-  file.write(json)
-
-  puts "Generated #{file}"
+  if file.exist? && file.read == json
+    puts "Skipped #{file}"
+  else
+    file.write(json)
+    puts "Generated #{file}"
+  end
 end
-
-exit 1 if changed
