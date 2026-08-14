@@ -9,11 +9,3 @@
 ```sh
 brew install aseprite
 ```
-
-<br />
-
-### [🔄 FreeFileSync](https://freefilesync.org)
-
-```sh
-brew install freefilesync
-```
