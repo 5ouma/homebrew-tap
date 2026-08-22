@@ -8,11 +8,11 @@
   ],
   "desc": "Iconic font aggregator, collection, and patcher",
   "homepage": "https://nerdfonts.com/",
-  "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.0/NerdFontsSymbolsOnly.zip",
+  "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/NerdFontsSymbolsOnly.zip",
   "url_specs": {
     "verified": "github.com/"
   },
-  "version": "3.5.0",
+  "version": "3.5.1",
   "autobump": true,
   "no_autobump_message": null,
   "skip_livecheck": false,
@@ -23,7 +23,7 @@
   "pinned": false,
   "pinned_version": null,
   "outdated": false,
-  "sha256": "49362450cd61b32c7d1dadbb98e82696d77cc215344636d25eabc8a82d6f8d7f",
+  "sha256": "fdca3682534f6f65e1ccb2345b0362ccf67d9b8eca7c8025330946e93e2473bc",
   "artifacts": [
     {
       "font": [
