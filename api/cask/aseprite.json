@@ -8,9 +8,9 @@
   ],
   "desc": "Animated Sprite Editor & Pixel Art Tool",
   "homepage": "https://www.aseprite.org/",
-  "url": "https://www.aseprite.org/downloads/trial/v1.3.18.2/Aseprite-v1.3.18.2-trial-macOS.dmg",
+  "url": "https://www.aseprite.org/downloads/trial/v1.3.18.3/Aseprite-v1.3.18.3-trial-macOS.dmg",
   "url_specs": {},
-  "version": "1.3.18.2",
+  "version": "1.3.18.3",
   "autobump": true,
   "no_autobump_message": null,
   "skip_livecheck": false,
@@ -21,7 +21,7 @@
   "pinned": false,
   "pinned_version": null,
   "outdated": false,
-  "sha256": "dcc3f2846876a1fa1c52000268951823026983c486dc65093bb3be6fe26f50ee",
+  "sha256": "85bd3d23e9e2891c42bc321ee56728540bbaa4c3ce5ebe2c1b14507cfedae5e9",
   "artifacts": [
     {
       "app": [
