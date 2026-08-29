@@ -15,32 +15,14 @@ on:
 permissions: {}
 
 jobs:
-  define-os:
-    name: 🔍 Define OS
-    runs-on: Ubuntu-Slim
-    timeout-minutes: 1
-    outputs:
-      os: ${{ steps.decide-os.outputs.os }}
-
-    steps:
-      - name: 🐧 Decide whether to install on Ubuntu
-        id: decide-os
-        run: |
-          os=('macOS-15' 'macOS-15-Intel')
-          "$macosOnly" || os+=('Ubuntu-24.04' 'Ubuntu-24.04-ARM')
-          echo "os=$(jq -Rc 'split(" ")' <<<"${os[@]}")" | tee -a "$GITHUB_OUTPUT"
-        env:
-          macosOnly: ${{ inputs.macos_only }}
-
   install:
     name: ${{ case(startsWith(matrix.os, 'macOS-'), '🍎', startsWith(matrix.os, 'Ubuntu-'), '🐧', '❓') }} ${{ matrix.os }}
-    needs: define-os
     runs-on: ${{ matrix.os }}
     timeout-minutes: 5
     strategy:
       fail-fast: false
       matrix:
-        os: ${{ fromJson(needs.define-os.outputs.os) }}
+        os: ${{ fromJSON(format('["macOS-15","macOS-26"{0}]', case(inputs.macos_only, '', ',"Ubuntu-24.04","Ubuntu-24.04-ARM","Ubuntu-26.04","Ubuntu-26.04-ARM"'))) }}
 
     steps:
       - name: 🚚 Check out repository
