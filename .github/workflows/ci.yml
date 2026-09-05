@@ -46,7 +46,7 @@ jobs:
         run: brew test-bot --verbose --only-cleanup-before
 
       - name: 💈 Check files for style guidelines
-        run: brew style -dv "$GITHUB_REPOSITORY"
+        run: brew style -dv ./**/*.rb
 
       - name: ⚠️ Check if any files have Ruby issues
         run: brew readall -dv "$GITHUB_REPOSITORY"
