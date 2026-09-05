@@ -2,8 +2,7 @@ cask "font-giro" do
   version :latest
   sha256 :no_check
 
-  url "https://dl.dafont.com/dl/?f=giro",
-      verified: "dl.dafont.com"
+  url "https://dl.dafont.com/dl/?f=giro"
   name "Giro Light"
   desc "Giro is an informal sans serif typeface"
   homepage "https://www.marcelomagalhaes.net/"

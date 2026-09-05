@@ -9,9 +9,7 @@
   "desc": "Iconic font aggregator, collection, and patcher",
   "homepage": "https://nerdfonts.com/",
   "url": "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.5.1/NerdFontsSymbolsOnly.zip",
-  "url_specs": {
-    "verified": "github.com/"
-  },
+  "url_specs": {},
   "version": "3.5.1",
   "autobump": true,
   "no_autobump_message": null,
