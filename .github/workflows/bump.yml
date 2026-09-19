@@ -29,7 +29,7 @@ jobs:
 
       - name: 🍺 Set up Homebrew with Tap
         id: homebrew
-        uses: ./.github/actions/setup-homebrew-with-tap
+        uses: $/.github/actions/setup-homebrew-with-tap
         with:
           ref: ${{ steps.checkout.outputs.commit }}
           install-bundler-gems: true

@@ -32,7 +32,7 @@ jobs:
           persist-credentials: false
 
       - name: 🍺 Set up Homebrew with Tap
-        uses: ./.github/actions/setup-homebrew-with-tap
+        uses: $/.github/actions/setup-homebrew-with-tap
         with:
           ref: ${{ steps.checkout.outputs.commit }}
 

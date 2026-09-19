@@ -37,7 +37,7 @@ jobs:
 
       - name: 🍺 Set up Homebrew with Tap
         id: homebrew
-        uses: ./.github/actions/setup-homebrew-with-tap
+        uses: $/.github/actions/setup-homebrew-with-tap
         with:
           ref: ${{ steps.checkout.outputs.commit }}
           install-bundler-gems: true
@@ -101,7 +101,7 @@ jobs:
           persist-credentials: false
 
       - name: 🍺 Set up Homebrew with Tap
-        uses: ./.github/actions/setup-homebrew-with-tap
+        uses: $/.github/actions/setup-homebrew-with-tap
         with:
           ref: ${{ steps.checkout.outputs.commit }}
 
@@ -125,7 +125,7 @@ jobs:
   install:
     name: 📥 Install ${{ matrix.package.name }}
     needs: collect-package-information
-    uses: ./.github/workflows/install-package.yml
+    uses: $/.github/workflows/install-package.yml
     with:
       package: ${{ matrix.package.full_name }}
       macos_only: ${{ matrix.package.macos_only }}
