@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cd "$(dirname "$0")"
+
+curl -L "$(bash laf/misc/skia-url.sh Release)" -o skia.zip
+unzip -q skia.zip -d skia
+
+cmake -S . -B build -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DLAF_BACKEND=skia \
+  -DSKIA_DIR="$PWD/skia" \
+  -DSKIA_LIBRARY_DIR="$PWD/skia/out/Release-$(uname -m | sed 's/x86_64/x64/')"
+cmake --build build --target aseprite
+
+curl -L "https://aseprite.org/downloads/trial/v$1/Aseprite-v$1-trial-macOS.dmg" -o trial.dmg
+mount=$(mktemp -d)
+echo y | hdiutil attach -quiet -nobrowse -readonly -mountpoint "$mount" trial.dmg
+cp -R "$mount/Aseprite.app" .
+hdiutil detach "$mount"
+
+cp build/bin/aseprite Aseprite.app/Contents/MacOS/
+rm -rf Aseprite.app/Contents/Resources/data
+cp -R build/bin/data Aseprite.app/Contents/Resources/

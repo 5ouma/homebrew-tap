@@ -6,9 +6,9 @@
   "name": [
     "Aseprite"
   ],
-  "desc": "Animated Sprite Editor & Pixel Art Tool",
+  "desc": "Animated sprite editor and pixel art tool",
   "homepage": "https://www.aseprite.org/",
-  "url": "https://www.aseprite.org/downloads/trial/v1.3.18.6/Aseprite-v1.3.18.6-trial-macOS.dmg",
+  "url": "https://github.com/aseprite/aseprite/releases/download/v1.3.18.6/Aseprite-v1.3.18.6-Source.zip",
   "url_specs": {},
   "version": "1.3.18.6",
   "autobump": true,
@@ -21,8 +21,35 @@
   "pinned": false,
   "pinned_version": null,
   "outdated": false,
-  "sha256": "7318dc843e0469e3a703771dbdb17371e2cb8366a3512783a46bf27746347f44",
+  "sha256": "fa9dd07a0c2a5ec91a4166333296bbb9e5c237933b59875d0cfee849d2358306",
   "artifacts": [
+    {
+      "uninstall": [
+        {
+          "trash": "/Applications/Aseprite.app"
+        }
+      ]
+    },
+    {
+      "generated_script": [
+        "build-aseprite",
+        {
+          "content": "#!/usr/bin/env bash\n\nset -euo pipefail\n\ncd \"$(dirname \"$0\")\"\n\ncurl -L \"$(bash laf/misc/skia-url.sh Release)\" -o skia.zip\nunzip -q skia.zip -d skia\n\ncmake -S . -B build -G Ninja \\\n  -DCMAKE_BUILD_TYPE=Release \\\n  -DLAF_BACKEND=skia \\\n  -DSKIA_DIR=\"$PWD/skia\" \\\n  -DSKIA_LIBRARY_DIR=\"$PWD/skia/out/Release-$(uname -m | sed 's/x86_64/x64/')\"\ncmake --build build --target aseprite\n\ncurl -L \"https://aseprite.org/downloads/trial/v$1/Aseprite-v$1-trial-macOS.dmg\" -o trial.dmg\nmount=$(mktemp -d)\necho y | hdiutil attach -quiet -nobrowse -readonly -mountpoint \"$mount\" trial.dmg\ncp -R \"$mount/Aseprite.app\" .\nhdiutil detach \"$mount\"\n\ncp build/bin/aseprite Aseprite.app/Contents/MacOS/\nrm -rf Aseprite.app/Contents/Resources/data\ncp -R build/bin/data Aseprite.app/Contents/Resources/\n"
+        }
+      ]
+    },
+    {
+      "installer": [
+        {
+          "script": {
+            "executable": "build-aseprite",
+            "args": [
+              "1.3.18.6"
+            ]
+          }
+        }
+      ]
+    },
     {
       "app": [
         "Aseprite.app"
@@ -46,6 +73,10 @@
   "caveats": null,
   "caveats_rosetta": null,
   "depends_on": {
+    "formula": [
+      "cmake",
+      "ninja"
+    ],
     "macos": {}
   },
   "conflicts_with": null,
