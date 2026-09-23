@@ -18,7 +18,7 @@ jobs:
   install:
     name: ${{ case(startsWith(matrix.os, 'macOS-'), '🍎', startsWith(matrix.os, 'Ubuntu-'), '🐧', '❓') }} ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
-    timeout-minutes: 5
+    timeout-minutes: 10
     strategy:
       fail-fast: false
       matrix:
