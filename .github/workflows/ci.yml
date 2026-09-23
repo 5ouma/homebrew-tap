@@ -80,7 +80,7 @@ jobs:
         uses: dorny/paths-filter@ceb8a2b8f2d89434be7ff52d3de7ec3738c5cc9d # v4.0.3
         with:
           filters: |
-            package: [added|modified: "Formula/**.rb", added|modified: "Casks/**.rb"]
+            package: [added|modified: "Formula/**/*.rb", added|modified: "Casks/**/*.rb"]
             workflow: [.github/workflows/ci.yml, .github/workflows/install-package.yml, .github/actions/setup-homebrew-with-tap/action.yml]
           list-files: shell
 
