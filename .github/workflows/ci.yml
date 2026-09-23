@@ -85,7 +85,7 @@ jobs:
           list-files: shell
 
   collect-package-information:
-    name: 📡 Collect package information
+    name: 📡 Collect Package Information
     needs: detect-changed-files
     if: ${{ needs.detect-changed-files.outputs.packages != '' || needs.detect-changed-files.outputs.workflowChanged == 'true' || github.event_name == 'schedule' }}
     runs-on: Ubuntu-Latest
