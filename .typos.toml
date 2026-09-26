@@ -1,5 +1,0 @@
-[default.extend-words]
-BA = "BA"
-
-[default.extend-identifiers]
-big_sur = "big_sur"
