@@ -9,17 +9,17 @@
   "license": null,
   "homepage": "https://gist.github.com/5ouma/0a5717868f21a29ab96c914ddd55a409",
   "versions": {
-    "stable": "1.2.1",
+    "stable": "1.2.3",
     "head": "HEAD",
     "bottle": false
   },
   "urls": {
     "stable": {
-      "url": "https://gist.githubusercontent.com/5ouma/0a5717868f21a29ab96c914ddd55a409/raw/17d5f4dd78b62a4de619854af486c9e4e5b6b6c1/macos_keyboard_shortcuts_exporter_importer.php",
+      "url": "https://gist.githubusercontent.com/5ouma/0a5717868f21a29ab96c914ddd55a409/raw/559ddf2ba41987102128527d53d8b075b8064238/macos_keyboard_shortcuts_exporter_importer.php",
       "tag": null,
       "revision": null,
       "using": null,
-      "checksum": "5880aa952d4912c689a0129eb80c1a36e2f1408c528d90db6e20d62f9510003a"
+      "checksum": "ade83d9e7c68ac9dc15fa332231ec02bf6928ecc7f51be33df71415aa337f6ef"
     },
     "head": {
       "url": "https://gist.github.com/0a5717868f21a29ab96c914ddd55a409.git",
@@ -87,6 +87,6 @@
   "tap_git_head": "HEAD",
   "ruby_source_path": "Formula/mksei.rb",
   "ruby_source_checksum": {
-    "sha256": "3f509edd87754b19b29fd7c9bad28279aba2ad92a81da9347ddf9c715f12eb7a"
+    "sha256": "a0782e48a6fc4bd933c3d790c5be99cfdd922e77274f762f27f2c1ee4ffc8a05"
   }
 }
