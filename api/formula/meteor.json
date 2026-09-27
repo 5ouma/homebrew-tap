@@ -75,6 +75,6 @@
   "tap_git_head": "HEAD",
   "ruby_source_path": "Formula/meteor.rb",
   "ruby_source_checksum": {
-    "sha256": "25d884509b89f6fcbd5fbbd2e1bae32be0f6c3d2e809f74d32e6baf1442ebf78"
+    "sha256": "8ed505c267ba482ee29d15293ab7e80d7e3cf28e14abed942a459cfb992a4d6c"
   }
 }

@@ -10,7 +10,7 @@ class Dorg < Formula
   depends_on :macos
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s")
+    system "go", "build", *std_go_args
     generate_completions_from_executable("#{bin}/#{name}", "completion")
   end
 

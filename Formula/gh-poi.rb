@@ -10,7 +10,7 @@ class GhPoi < Formula
 
   def install
     ENV["CGO_ENABLED"] = "0"
-    system "go", "build", *std_go_args(ldflags: "-s")
+    system "go", "build", *std_go_args
   end
 
   test do
