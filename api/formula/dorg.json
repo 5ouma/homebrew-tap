@@ -9,17 +9,17 @@
   "license": "MIT",
   "homepage": "https://github.com/5ouma/dorg",
   "versions": {
-    "stable": "1.1.1",
+    "stable": "1.1.2",
     "head": "HEAD",
     "bottle": false
   },
   "urls": {
     "stable": {
-      "url": "https://github.com/5ouma/dorg/archive/refs/tags/v1.1.1.tar.gz",
+      "url": "https://github.com/5ouma/dorg/archive/refs/tags/v1.1.2.tar.gz",
       "tag": null,
       "revision": null,
       "using": null,
-      "checksum": "aa27cef7b24a7884e04db9b97f0367c2393789fd332987f37e9277d4d4e721f6"
+      "checksum": "e42e04621f6026d11174c07a7156f4582aaf4f3bad78b33723353f79ef76e8ce"
     },
     "head": {
       "url": "https://github.com/5ouma/dorg.git",
@@ -87,6 +87,6 @@
   "tap_git_head": "HEAD",
   "ruby_source_path": "Formula/dorg.rb",
   "ruby_source_checksum": {
-    "sha256": "f5d190d6bdcf9744c9a39250845fad2780fb8f2f07485206661300583c927ae0"
+    "sha256": "16d6e33ab3314f4ad2c1b8171483128cde71ae52c4c0faa75b527686b9bc3149"
   }
 }

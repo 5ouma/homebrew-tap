@@ -1,8 +1,8 @@
 class Dorg < Formula
   desc "Organize macOS Dock Items"
   homepage "https://github.com/5ouma/dorg"
-  url "https://github.com/5ouma/dorg/archive/refs/tags/v1.1.1.tar.gz"
-  sha256 "aa27cef7b24a7884e04db9b97f0367c2393789fd332987f37e9277d4d4e721f6"
+  url "https://github.com/5ouma/dorg/archive/refs/tags/v1.1.2.tar.gz"
+  sha256 "e42e04621f6026d11174c07a7156f4582aaf4f3bad78b33723353f79ef76e8ce"
   license "MIT"
   head "https://github.com/5ouma/dorg.git", branch: "main"
 
