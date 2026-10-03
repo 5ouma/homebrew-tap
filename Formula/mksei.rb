@@ -12,4 +12,10 @@ class Mksei < Formula
   def install
     bin.install "macos_keyboard_shortcuts_exporter_importer.php" => "mksei"
   end
+
+  test do
+    shortcuts = testpath/"keyboard_shortcuts.json"
+    shortcuts.write "[]\n"
+    system "#{bin}/#{name}", "load", shortcuts
+  end
 end

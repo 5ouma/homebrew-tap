@@ -14,6 +14,22 @@ class Meteor < Formula
   end
 
   test do
-    system "#{bin}/#{name}", "-v"
+    cd testpath do
+      system "git", "init"
+      system "git", "config", "user.email", "test@example.com"
+      system "git", "config", "user.name", "Homebrew Test"
+
+      ENV["HOME"] = (testpath/"home").to_s
+      mkdir_p testpath/"home"
+      (testpath/"home/.meteor.json").write <<~JSON
+        {"showIntro":false,"allowCustomPrefixes":true,
+         "allowCustomScopes":true,"prefixes":[{"type":"fix","description":"a fix"}]}
+      JSON
+
+      command = "script -q /dev/null -c " \
+                "'#{bin}/#{name} --as-git-editor --skip-breaking-change .git/COMMIT_EDITMSG'"
+      output = pipe_output(command, "fix\n\n\n\n\n\n")
+      assert_match "fix", output
+    end
   end
 end

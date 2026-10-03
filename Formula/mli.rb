@@ -15,6 +15,8 @@ class Mli < Formula
   end
 
   test do
-    system "#{bin}/#{name}", "-v"
+    input = testpath/"login_items.json"
+    input.write "[]"
+    system "#{bin}/#{name}", "load", "--file", input
   end
 end

@@ -15,6 +15,24 @@ class Dorg < Formula
   end
 
   test do
-    system "#{bin}/#{name}", "-v"
+    home = testpath/"home"
+    ENV["HOME"] = home.to_s
+    mkdir_p home/"Library/Preferences"
+    (home/"Library/Preferences/com.apple.dock.plist").write <<~PLIST
+      <?xml version="1.0" encoding="UTF-8"?>
+      <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+      <plist version="1.0">
+      <dict>
+        <key>persistent-apps</key>
+        <array/>
+        <key>persistent-others</key>
+        <array/>
+      </dict>
+      </plist>
+    PLIST
+    output = testpath/"dorg.yml"
+    system "#{bin}/#{name}", "save", "--file", output
+    assert_path_exists output
+    assert_match "dock", output.read
   end
 end

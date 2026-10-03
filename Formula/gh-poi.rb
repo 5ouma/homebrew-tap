@@ -14,6 +14,16 @@ class GhPoi < Formula
   end
 
   test do
-    system "#{bin}/#{name}", "-h"
+    system "git", "init", testpath
+    cd testpath do
+      system "git", "config", "user.email", "test@example.com"
+      system "git", "config", "user.name", "Homebrew Test"
+      system "git", "commit", "--allow-empty", "-m", "initial commit"
+      system "git", "switch", "-c", "test-branch"
+      system "#{bin}/#{name}", "lock", "test-branch"
+      assert_equal "true", shell_output("git config branch.test-branch.gh-poi-locked").strip
+      system "#{bin}/#{name}", "unlock", "test-branch"
+      assert_empty shell_output("git config branch.test-branch.gh-poi-locked 2>/dev/null", 1)
+    end
   end
 end
