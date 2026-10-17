@@ -46,6 +46,7 @@
   "test_dependencies": [],
   "recommended_dependencies": [],
   "optional_dependencies": [],
+  "no_linkage_dependencies": [],
   "uses_from_macos": [],
   "uses_from_macos_bounds": [],
   "requirements": [],
