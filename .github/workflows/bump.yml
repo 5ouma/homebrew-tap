@@ -11,10 +11,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.schedule || github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   bump:
     name: ✨ Bump Packages
-    runs-on: macOS-Latest
+    permissions:
+      contents: read
+    runs-on: macOS-26
     environment:
       name: Bump
       deployment: false

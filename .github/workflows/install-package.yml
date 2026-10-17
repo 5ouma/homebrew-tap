@@ -14,9 +14,15 @@ on:
 
 permissions: {}
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   install:
     name: ${{ case(startsWith(matrix.os, 'macOS-'), '🍎', startsWith(matrix.os, 'Ubuntu-'), '🐧', '❓') }} ${{ matrix.os }}
+    permissions:
+      contents: read
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     strategy:

@@ -22,10 +22,16 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.event.schedule || github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    shell: bash
+
 jobs:
   test:
     name: 🧪 Test
-    runs-on: macOS-Latest
+    permissions:
+      contents: read
+    runs-on: macOS-26
     timeout-minutes: 3
 
     steps:
@@ -62,7 +68,9 @@ jobs:
 
   detect-changed-files:
     name: 🔍 Detect Changed Files
-    runs-on: Ubuntu-Latest
+    permissions:
+      contents: read
+    runs-on: Ubuntu-24.04
     timeout-minutes: 1
     outputs:
       packages: ${{ steps.filter.outputs.package_files }}
@@ -86,9 +94,11 @@ jobs:
 
   collect-package-information:
     name: 📡 Collect Package Information
+    permissions:
+      contents: read
     needs: detect-changed-files
     if: ${{ needs.detect-changed-files.outputs.packages != '' || needs.detect-changed-files.outputs.workflowChanged == 'true' || github.event_name == 'schedule' }}
-    runs-on: Ubuntu-Latest
+    runs-on: Ubuntu-24.04
     timeout-minutes: 1
     outputs:
       packages: ${{ steps.collect.outputs.packages }}
@@ -124,6 +134,8 @@ jobs:
 
   install:
     name: 📥 Install ${{ matrix.package.name }}
+    permissions:
+      contents: read
     needs: collect-package-information
     uses: $/.github/workflows/install-package.yml
     with:
