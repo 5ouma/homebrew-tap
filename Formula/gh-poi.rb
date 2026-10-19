@@ -1,8 +1,8 @@
 class GhPoi < Formula
   desc "Safely clean up your local branches"
   homepage "https://github.com/seachicken/gh-poi"
-  url "https://github.com/seachicken/gh-poi/archive/refs/tags/v0.18.4.tar.gz"
-  sha256 "ff6f6e263b950780b027c1f4743d359b693504ee85ead5d58379f442d0eb09a4"
+  url "https://github.com/seachicken/gh-poi/archive/refs/tags/v0.18.5.tar.gz"
+  sha256 "a252a0e7922c46dff689becbf68fdc0bc0b9b1308f9f705b9f4d4594f5547144"
   license "MIT"
   head "https://github.com/seachicken/gh-poi.git", branch: "main"
 
