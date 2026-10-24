@@ -20,7 +20,7 @@ jobs:
     name: ✨ Bump Packages
     permissions:
       contents: read
-    runs-on: macOS-26
+    runs-on: macos-26
     environment:
       name: Bump
       deployment: false
