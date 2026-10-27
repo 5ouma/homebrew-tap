@@ -9,17 +9,17 @@
   "license": "MIT",
   "homepage": "https://github.com/seachicken/gh-poi",
   "versions": {
-    "stable": "0.18.5",
+    "stable": "0.18.6",
     "head": "HEAD",
     "bottle": false
   },
   "urls": {
     "stable": {
-      "url": "https://github.com/seachicken/gh-poi/archive/refs/tags/v0.18.5.tar.gz",
+      "url": "https://github.com/seachicken/gh-poi/archive/refs/tags/v0.18.6.tar.gz",
       "tag": null,
       "revision": null,
       "using": null,
-      "checksum": "a252a0e7922c46dff689becbf68fdc0bc0b9b1308f9f705b9f4d4594f5547144"
+      "checksum": "3321e5cacc17586152be12801dbe99024bf4dd1b58f9abc46a3503be3165760e"
     },
     "head": {
       "url": "https://github.com/seachicken/gh-poi.git",
@@ -77,6 +77,6 @@
   "tap_git_head": "HEAD",
   "ruby_source_path": "Formula/gh-poi.rb",
   "ruby_source_checksum": {
-    "sha256": "4ac3ec2fecb1fa148ea489248bb089c9bbbec21882a9b801ae31c588ff3a3180"
+    "sha256": "2b49c4256612dabcb1b28702d452e23474f9eeec9d983ff3b31ea14455771042"
   }
 }
