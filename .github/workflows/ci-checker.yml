@@ -24,7 +24,7 @@ jobs:
 
     steps:
       - name: 🛡️ Run Merge Gatekeeper
-        uses: upsidr/merge-gatekeeper@09af7a82c1666d0e64d2bd8c01797a0bcfd3bb5d # v1.2.1
+        uses: upsidr/merge-gatekeeper@v1.2.1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           self: 🛡️ Merge Gatekeeper
@@ -42,7 +42,7 @@ jobs:
     steps:
       - name: 💳 Create GitHub App Token
         id: app-token
-        uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        uses: actions/create-github-app-token@v3.4.0
         with:
           client-id: ${{ vars.BREW_COMMIT_CLIENT_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
@@ -67,7 +67,7 @@ jobs:
     steps:
       - name: 💳 Create GitHub App Token
         id: app-token
-        uses: actions/create-github-app-token@f418cff399f7aef4c2f0ad47e25ca7a6abbdd6fc # v3.4.0
+        uses: actions/create-github-app-token@v3.4.0
         with:
           client-id: ${{ vars.BREW_COMMIT_CLIENT_ID }}
           private-key: ${{ secrets.PRIVATE_KEY }}
