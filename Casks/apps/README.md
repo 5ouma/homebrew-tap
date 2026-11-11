@@ -29,3 +29,11 @@ brew install megpoid-v4-power
 brew install megpoid-v4-sweet
 brew install megpoid-v4-whisper
 ```
+
+<br />
+
+### [🎤 VOCALOID3 Megpoid English](https://ssw.co.jp/products/vocal3/mpe/index.html)
+
+```sh
+brew install megpoid-english
+```
