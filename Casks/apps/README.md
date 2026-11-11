@@ -9,3 +9,11 @@
 ```sh
 brew install aseprite
 ```
+
+<br />
+
+### [🎹 VOCALOID7 Editor](https://www.vocaloid.com/vocaloid7)
+
+```sh
+brew install vocaloid7-editor
+```
