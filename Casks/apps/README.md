@@ -17,3 +17,15 @@ brew install aseprite
 ```sh
 brew install vocaloid7-editor
 ```
+
+<br />
+
+### [🎤 VOCALOID4 Megpoid](https://ssw.co.jp/products/vocaloid4/megpoid/index.html)
+
+```sh
+brew install megpoid-v4-native
+brew install megpoid-v4-adult
+brew install megpoid-v4-power
+brew install megpoid-v4-sweet
+brew install megpoid-v4-whisper
+```

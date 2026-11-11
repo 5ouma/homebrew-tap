@@ -1,0 +1,125 @@
+{
+  "token": "megpoid-v4-adult",
+  "full_token": "megpoid-v4-adult",
+  "old_tokens": [],
+  "tap": null,
+  "name": [
+    "VOCALOID4 Megpoid Adult"
+  ],
+  "desc": "さらなる表現力を携えたあらゆるジャンルを歌いあげるバーチャルボーカリスト",
+  "homepage": "https://ssw.co.jp/products/vocaloid4/megpoid/index.html",
+  "url": "https://download.ssw.co.jp/DL_Products/VL4_Megpoid/Mac/V4Megpoid_Adult_Mac.dmg",
+  "url_specs": {},
+  "version": "latest",
+  "autobump": false,
+  "no_autobump_message": "latest_version",
+  "skip_livecheck": true,
+  "installed": null,
+  "installed_time": null,
+  "bundle_version": null,
+  "bundle_short_version": null,
+  "pinned": false,
+  "pinned_version": null,
+  "outdated": false,
+  "sha256": "no_check",
+  "artifacts": [
+    {
+      "uninstall": [
+        {
+          "script": {
+            "executable": "/bin/bash",
+            "args": [
+              "-c",
+              "'/Applications/VOCALOID/Uninstaller/VOCALOID4/Megpoid_V4_Adult Uninstaller.app/Contents/MacOS/Uninstall'\n'/Applications/VOCALOID/Uninstaller/VOCALOID4/Megpoid_V4_MellowAdult Uninstaller.app/Contents/MacOS/Uninstall'\n"
+            ],
+            "sudo": true
+          },
+          "pkgutil": [
+            "com.yamaha.VOCALOID4.Megpoid_V4_Adult",
+            "com.yamaha.VOCALOID4.Megpoid_V4_MellowAdult"
+          ]
+        }
+      ]
+    },
+    {
+      "pkg": [
+        "VOCALOID4_Library_Megpoid_V4_Adult_Installer.pkg"
+      ]
+    },
+    {
+      "postflight_steps": [
+        {
+          "steps": [
+            {
+              "command": {
+                "path": "{{appdir}}/VOCALOID/Uninstaller/VOCALOID License Manager Uninstaller.app/Contents/MacOS/Uninstall"
+              },
+              "sudo": true,
+              "type": "run"
+            },
+            {
+              "command": {
+                "path": "/bin/rm"
+              },
+              "sudo": true,
+              "type": "run",
+              "args": [
+                "-f",
+                "-r",
+                "{{appdir}}/VOCALOID/Uninstaller/VOCALOID License Manager Uninstaller.app"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "uninstall_postflight_steps": [
+        {
+          "steps": [
+            {
+              "command": {
+                "path": "/bin/rm"
+              },
+              "sudo": true,
+              "type": "run",
+              "args": [
+                "-f",
+                "-r",
+                "{{appdir}}/VOCALOID/Uninstaller/VOCALOID4/Megpoid_V4_Adult Uninstaller.app",
+                "{{appdir}}/VOCALOID/Uninstaller/VOCALOID4/Megpoid_V4_MellowAdult Uninstaller.app"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "caveats": "Don't forget to deactivate your license before uninstalling.\n",
+  "caveats_rosetta": null,
+  "depends_on": {
+    "macos": {}
+  },
+  "conflicts_with": null,
+  "container": null,
+  "rename": [],
+  "auto_updates": null,
+  "deprecated": false,
+  "deprecation_date": null,
+  "deprecation_reason": null,
+  "deprecation_replacement_formula": null,
+  "deprecation_replacement_cask": null,
+  "deprecate_args": null,
+  "disabled": false,
+  "disable_date": null,
+  "disable_reason": null,
+  "disable_replacement_formula": null,
+  "disable_replacement_cask": null,
+  "disable_args": null,
+  "tap_git_head": null,
+  "languages": [],
+  "ruby_source_path": null,
+  "ruby_source_checksum": {
+    "sha256": null
+  }
+}
