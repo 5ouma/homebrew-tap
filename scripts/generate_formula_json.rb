@@ -6,8 +6,13 @@ require "formulary"
 require "tap"
 
 root = Pathname(__dir__).parent.expand_path
+output = root.join("api/formula").mkpath
 
-root.join("Formula").glob("**/*.rb").each do |path|
+formulae = root.join("Formula").glob("**/*.rb")
+expected = formulae.map { |path| output.join("#{path.basename(".rb")}.json") }
+(output.glob("*.json") - expected).each(&:delete)
+
+formulae.each do |path|
   token = path.basename(".rb").to_s
 
   formula = Formulary.from_contents(
@@ -22,7 +27,7 @@ root.join("Formula").glob("**/*.rb").each do |path|
   data["tap_git_head"] = "HEAD"
 
   json = "#{JSON.pretty_generate(data)}\n"
-  file = root.join("api/formula").tap(&:mkpath).join("#{formula.name}.json")
+  file = output.join("#{formula.name}.json")
 
   if file.exist? && file.read == json
     puts "Skipped #{file}"
