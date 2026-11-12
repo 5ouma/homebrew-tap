@@ -27,7 +27,7 @@
       "font": [
         "SymbolsNerdFont-Regular.ttf"
       ],
-      "target": "~/Library/Fonts/SymbolsNerdFont-Regular.ttf"
+      "target": "/Users/runner/Library/Fonts/SymbolsNerdFont-Regular.ttf"
     }
   ],
   "caveats": null,

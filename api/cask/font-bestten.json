@@ -27,13 +27,13 @@
       "font": [
         "Best10-FONT/BestTen-CRT.otf"
       ],
-      "target": "~/Library/Fonts/BestTen-CRT.otf"
+      "target": "/Users/runner/Library/Fonts/BestTen-CRT.otf"
     },
     {
       "font": [
         "Best10-FONT/BestTen-DOT.otf"
       ],
-      "target": "~/Library/Fonts/BestTen-DOT.otf"
+      "target": "/Users/runner/Library/Fonts/BestTen-DOT.otf"
     }
   ],
   "caveats": null,
