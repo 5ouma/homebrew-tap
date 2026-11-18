@@ -2,7 +2,7 @@ cask "vocaloid7-editor" do
   version :latest
   sha256 :no_check
 
-  url "https://www.vocaloid.com/en/download_trials/vocaloid7_mac"
+  url "https://www.vocaloid.com/en/download/vocaloid7_mac"
   name "VOCALOID7 Editor"
   desc "この歌声がオンガクを動かす"
   homepage "https://www.vocaloid.com/vocaloid7/"
